@@ -1,12 +1,18 @@
 # Copyright 2012 Digital Inspiration
 # http://www.labnol.org/
 
+import webapp2
 import os
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp import util
-from google.appengine.ext.webapp import template
+import jinja2
+#from google.appengine.ext import webapp
+#from google.appengine.ext.webapp import util
+#from google.appengine.ext.webapp import template
 
-class MainHandler(webapp.RequestHandler):
+jinja_environment = jinja2.Environment(
+	loader = jinja2.FileSystemLoader(os.path.dirname(__file__) + "/templates")
+	)
+
+class MainHandler(webapp2.RequestHandler):
   def get (self, q):
     if q is None:
       q = 'index.html'
