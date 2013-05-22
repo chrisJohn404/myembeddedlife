@@ -6,6 +6,7 @@ import webapp2
 import os
 import jinja2
 from google.appengine.api import users
+import yaml
 
 #defines the jinja_environment variable
 jinja_environment = jinja2.Environment(
@@ -59,6 +60,8 @@ class webApplication(object):
 			'mainTabs': mainTabs,
 		}
 		self.a = 1
+		data = yaml.load(open('index.yaml', 'rb'))
+		print data
 	def get(self):
 		return self.webSiteInfo
 
