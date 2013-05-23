@@ -16,6 +16,7 @@ jinja_environment = jinja2.Environment(
 
 class webApplication(object):
 	def __init__(self):
+		#ooh la la
 		test = {
 			'dumb': 'dumb',
 		}
@@ -84,7 +85,7 @@ class webApplication(object):
 		return self.webSiteInfo, self.webSiteInfo['mainTabList'][0]['template']
 
 	def getTutorialsPage(self, reqStr):
-		print reqStr[5:(reqStr[5:len(reqStr)].find(' ')+5)]
+		reqStr = str(reqStr.path)
 		self.populateUserName()
 
 		#make select the proper page as active
@@ -92,8 +93,7 @@ class webApplication(object):
 		return self.webSiteInfo, self.webSiteInfo['mainTabList'][1]['template']
 
 	def getProjectsPage(self, reqStr):
-		reqStr = str(reqStr)
-		print reqStr[5:(reqStr[5:len(reqStr)].find(' ')+5)]
+		reqStr = str(reqStr.path)
 		self.populateUserName()
 
 		#make select the proper page as active
@@ -101,9 +101,8 @@ class webApplication(object):
 		return self.webSiteInfo, self.webSiteInfo['mainTabList'][2]['template']
 
 	def getBookshelfPage(self, reqStr):
-		print type(reqStr)
-		print reqStr.url
-		print reqStr.path
+		#print reqStr.url
+		#print reqStr.path
 		reqStr = str(reqStr.path)
 
 		self.populateUserName()
@@ -113,7 +112,7 @@ class webApplication(object):
 		return self.webSiteInfo, self.webSiteInfo['mainTabList'][3]['template']
 
 	def getAboutMePage(self, reqStr):
-		print reqStr[5:(reqStr[5:len(reqStr)].find(' ')+5)]
+		reqStr = str(reqStr.path)
 		self.populateUserName()
 
 		#make select the proper page as active
