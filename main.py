@@ -7,6 +7,7 @@ import os
 import jinja2
 from google.appengine.api import users
 import yaml
+import logging
 
 #defines the jinja_environment variable
 jinja_environment = jinja2.Environment(
@@ -15,6 +16,10 @@ jinja_environment = jinja2.Environment(
 
 class webApplication(object):
 	def __init__(self):
+		#ooh la la
+		test = {
+			'dumb': 'dumb',
+		}
 		homePage = {
 			'title': 'Home',
 		}
@@ -59,35 +64,137 @@ class webApplication(object):
 			'mainTabList': mainTabList,
 			'mainTabs': mainTabs,
 		}
-		self.a = 1
 		data = yaml.load(open('index.yaml', 'rb'))
-		print data
-	def get(self):
-		return self.webSiteInfo
+		#print data
+		#print "\r\n\r\n"
+		#print self.webSiteInfo
+		self.webSiteInfo = data
+	def populateUserName(self):
+		#get the client's user-name
+		user = users.get_current_user()
+		if user:
+			self.webSiteInfo['currentUserName'] = 'Hello ' + str(user) + "!"
+		else:
+			self.webSiteInfo['pageTitle'] = 'Log In'
+
+	def getHomePage(self):
+		self.populateUserName()
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][0]['selected']='true'
+		return self.webSiteInfo, self.webSiteInfo['mainTabList'][0]['template']
+
+	def getTutorialsPage(self, reqStr):
+		reqStr = str(reqStr.path)
+		self.populateUserName()
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][1]['selected']='true'
+		return self.webSiteInfo, self.webSiteInfo['mainTabList'][1]['template']
+
+	def getProjectsPage(self, reqStr):
+		reqStr = str(reqStr.path)
+		self.populateUserName()
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][2]['selected']='true'
+		return self.webSiteInfo, self.webSiteInfo['mainTabList'][2]['template']
+
+	def getBookshelfPage(self, reqStr):
+		#print reqStr.url
+		#print reqStr.path
+		reqStr = str(reqStr.path)
+
+		self.populateUserName()
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][3]['selected']='true'
+		return self.webSiteInfo, self.webSiteInfo['mainTabList'][3]['template']
+
+	def getAboutMePage(self, reqStr):
+		reqStr = str(reqStr.path)
+		self.populateUserName()
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][4]['selected']='true'
+		return self.webSiteInfo, self.webSiteInfo['mainTabList'][4]['template']
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-    	user = users.get_current_user()
-    	print user
+    	#create an instance of the webApplication class
+		page = webApplication()
 
-    	page = webApplication()
-
-    	self.template_values = page.get()
-        #self.response.headers['Content-Type'] = 'text/html'
-        #self.response.write('<h1>Hello, webapp2 Worlda!</h1>')
+    	#load the home page & perform actions
+		self.template_values, self.pageStr = page.getHomePage()        
         
-        if user:
-        	self.template_values['pageTitle'] = user
-        else:
-        	self.redirect(users.create_login_url(self.request.uri))
-        template = jinja_environment.get_template('Home/home.html')
-        self.response.out.write(template.render(self.template_values))
-        
+        #print self.request
+        #	self.redirect(users.create_login_url(self.request.uri))
 
-app = webapp2.WSGIApplication([('/', MainPage)])
+		template = jinja_environment.get_template(self.pageStr)
+		self.response.out.write(template.render(self.template_values))
+
+		
+class TutorialsPage(webapp2.RequestHandler):
+	def get(self):
+		#create an instance of the webApplication class
+		page = webApplication()
+
+		#load the home page & perform actions
+		self.template_values, self.pageStr = page.getTutorialsPage(self.request) 
+
+		template = jinja_environment.get_template(self.pageStr)
+		self.response.out.write(template.render(self.template_values))
+
+class ProjectsPage(webapp2.RequestHandler):
+	def get(self):
+		#create an instance of the webApplication class
+		page = webApplication()
+
+    	#load the home page & perform actions
+		self.template_values, self.pageStr = page.getProjectsPage(self.request) 
+
+		template = jinja_environment.get_template(self.pageStr)
+		self.response.out.write(template.render(self.template_values))
+
+class BookshelfPage(webapp2.RequestHandler):
+	def get(self):
+		#create an instance of the webApplication class
+		page = webApplication()
+
+    	#load the home page & perform actions
+		self.template_values, self.pageStr = page.getBookshelfPage(self.request) 
+
+		template = jinja_environment.get_template(self.pageStr)
+		self.response.out.write(template.render(self.template_values))
+
+class AboutMePage(webapp2.RequestHandler):
+	def get(self):
+		#create an instance of the webApplication class
+		page = webApplication()
+
+    	#load the home page & perform actions
+		self.template_values, self.pageStr = page.getAboutMePage(self.request) 
+
+		template = jinja_environment.get_template(self.pageStr)
+		self.response.out.write(template.render(self.template_values))
+
+app = webapp2.WSGIApplication([
+	('/', MainPage),
+	('/Home', MainPage),
+	('/Tutorials', TutorialsPage),
+	('/Tutorials/.*', TutorialsPage),
+	('/Projects', ProjectsPage),
+	('/Projects/.*', ProjectsPage),
+	('/Bookshelf', BookshelfPage),
+	('/Bookshelf/.*', BookshelfPage),
+	('/AboutMe', AboutMePage),
+	('/AboutMe/.*', AboutMePage),
+	],
+debug=True)
 
 def main():
-    app.run()
+	logging.getLogger().setLevel(logging.DEBUG)
+	app.run()
 
 if __name__ == '__main__':
     main()

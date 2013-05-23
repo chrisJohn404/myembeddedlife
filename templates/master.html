@@ -6,30 +6,64 @@
 	<!-- Web-site Includes -->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+	<link rel="shortcut icon" type="image/x-icon" href="/icon-shadow.png">
 	<!-- Webapp Includes -->
-	<link href="stylesheet.css" rel="stylesheet" type="text/css" />
+	<!--<link href="stylesheet.css" rel="stylesheet" type="text/css" />-->
+	<link href="Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
 	{% block title %}
 	<title>{{ pageTitle }}</title>
 	{% endblock %}
+	<meta property="og:site_name" content="Tutorialzine">
+	<!--<meta name="keywords" content="tutorialzine, tutorial zine, tzine, tutorials, freebies, resources, web development, webdev, demo, PHP, MySQL, jQuery, CSS, XHTML, jQuery UI, CSS3, HTML5, HTML, web design, webdesign">-->
+	<meta property="og:title" content="Tutorials, Resources, Projects">
+	<meta property="og:url" content="myembeddedlife.appspot.com">
+	<meta property="og:image" content="myembeddedlife.appspot.com/icon-shadow.png">
+	<meta property="og:type" content="website">
 </head>
 
-<body>
+<body id="mainPage">
 	<div id="pageHeader">
-		{% block head %}
-		<h1>My Web Page!!</h1>
-		{% endblock %}
-	</div>
-	<div>
-		<div id="pagecontentList">
-			<ul>
+		<div id="header">
+			<div class="major component">
+				<div class="left"> 
+					<h1>My Embedded Life</h1>
+				</div>
+				<div class="right"> 
+					<h1>By Chris Johnson</h1>
+					<p class="userName">{{ currentUserName }}</p>
+				</div>
+			</div>
+			<div class="tabList">
 				{% for mainTab in mainTabList %}
-				<li>{{ mainTab }}</li>
+				{% if mainTab.selected is string %}
+					<div class="selected minor list">
+						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+					</div>
+				{% else %}
+					<div class="minor list">
+						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+					</div>
+				{% endif %}
 				{% endfor %}
-			</ul>
+				{% block head %}
+				<h1>My Web Page!!</h1>
+				{% endblock %}
+			</div>
 		</div>
-		<div id="pageContentBlock">
-			{% block content %}
-			{% endblock %}
+	</div>
+	<div id="pageBody">
+		<div id="pageSideBar">
+			<div id="pagecontentList">
+				<ul>
+					{% for mainTab in mainTabList %}
+					<li>{{ mainTab.title }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div id="pageContentBlock">
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
 	</div>
 </body>
