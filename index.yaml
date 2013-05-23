@@ -8,6 +8,7 @@ mainTabList:
   - 'Home':
     selected:
     title: 'Home'
+    template: 'Home/home.html'
     description: |
         Welcome to my website!
 
@@ -15,6 +16,7 @@ mainTabList:
   - 'Tutorials':
     selected:
     title: 'Tutorials'
+    template: 'Home/home.html'
     description: |
         This is where you can find a large amount of information regarding several different fields, CS, EE, ECE, & Climbing!  They will hopefully provide insight, tips, and assistance as to how this complex world of technology works.
 
@@ -22,6 +24,7 @@ mainTabList:
   - 'Projects':
     selected:
     title: 'Projects'
+    template: 'Home/home.html'
     description: |
         This is where you can find a list of all my different projects, some are quite interesting.
 
@@ -29,6 +32,7 @@ mainTabList:
   - 'Bookshelf':
     selected:
     title: 'Bookshelf'
+    template: 'Home/home.html'
     description: |
         This is where you can find a list of books, websites, or youtube videos that I find to be interesting.
 
@@ -36,6 +40,7 @@ mainTabList:
   - 'AboutMe':
     selected:
     title: 'AboutMe'
+    template: 'Home/home.html'
     description: |
         This is where you can find information about me, the web site developer & creator of the related Tutorials/Projects. 
 
