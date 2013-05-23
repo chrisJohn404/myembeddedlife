@@ -2,7 +2,17 @@
 
 <!--Block For Changing Page Header-->
 {% block head %}
-<h1>Blah</h1>
+	{% for mainTab in mainTabList %}
+	{% if mainTab.selected is string %}
+		<div class="selected minor list">
+			<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+		</div>
+	{% else %}
+		<div class="minor list">
+			<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+		</div>
+	{% endif %}
+	{% endfor %}
 {% endblock %}
 
 <!--Block For Changing Page Content-->

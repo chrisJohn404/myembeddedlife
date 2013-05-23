@@ -1,8 +1,63 @@
 ---
-ThisIsCool: 'hello!'
-Warning: 
-  - file: 'help'
-    line: 28
-  - boora: 'idk'
-    line: 23
 AnotherLine: 'ok'
+pageTitle: 'myEmbeddedLife'
+
+mainTabList:
+#Special Information to be displayed on the home page, consider removing
+  - 'Home':
+    selected:
+    title: 'Home'
+    description: |
+        Welcome to my website!
+
+#Information to be displayed under the instructables tab
+  - 'Tutorials':
+    selected:
+    title: 'Tutorials'
+    description: |
+        This is where you can find a large amount of information regarding several different fields, CS, EE, ECE, & Climbing!  They will hopefully provide insight, tips, and assistance as to how this complex world of technology works.
+
+#Information to be displayed under the projects tab
+  - 'Projects':
+    selected:
+    title: 'Projects'
+    description: |
+        This is where you can find a list of all my different projects, some are quite interesting.
+
+#Information to be displayed under the bookshelf tab
+  - 'Bookshelf':
+    selected:
+    title: 'Bookshelf'
+    description: |
+        This is where you can find a list of books, websites, or youtube videos that I find to be interesting.
+
+#Information to be displayed under the AboutMe tab, consider removing
+  - 'AboutMe':
+    selected:
+    title: 'AboutMe'
+    description: |
+        This is where you can find information about me, the web site developer & creator of the related Tutorials/Projects. 
+
+mainTabs:
+  - title: 'Home'
+  - title: 'Instructables'
+    description: |
+        Hello World!! This is a multi-line
+        input
+    contents:
+      - title: 'Inst1'
+      - title: 'Inst2'
+  - title: 'Projects'
+    contents:
+      - title: 'Proj1'
+      - title: 'Proj2'
+  - title: 'Bookshelf'
+    contents:
+      - title: 'Book1'
+      - title: 'Book2'
+  - title: 'AboutMe'
+    contents:
+      - title: 'Interests'
+      - title: 'Current Activities'
+
+activePage: 'Home'

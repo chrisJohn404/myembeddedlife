@@ -59,9 +59,11 @@ class webApplication(object):
 			'mainTabList': mainTabList,
 			'mainTabs': mainTabs,
 		}
-		self.a = 1
 		data = yaml.load(open('index.yaml', 'rb'))
-		print data
+		#print data
+		#print "\r\n\r\n"
+		#print self.webSiteInfo
+		self.webSiteInfo = data
 	def get(self):
 		return self.webSiteInfo
 
@@ -80,6 +82,11 @@ class MainPage(webapp2.RequestHandler):
         	self.template_values['pageTitle'] = user
         else:
         	self.redirect(users.create_login_url(self.request.uri))
+
+        #make select the proper page as active
+        self.template_values['mainTabList'][0]['selected']='true'
+        print self.template_values['mainTabList'][0]['selected']
+
         template = jinja_environment.get_template('Home/home.html')
         self.response.out.write(template.render(self.template_values))
         
