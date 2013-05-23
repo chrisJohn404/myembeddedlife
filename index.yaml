@@ -1,6 +1,7 @@
 ---
 AnotherLine: 'ok'
 pageTitle: 'myEmbeddedLife'
+currentUserName: 'none'
 
 mainTabList:
 #Special Information to be displayed on the home page, consider removing

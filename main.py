@@ -64,34 +64,38 @@ class webApplication(object):
 		#print "\r\n\r\n"
 		#print self.webSiteInfo
 		self.webSiteInfo = data
-	def get(self):
+	def getHomePage(self):
+		#get the client's user-name
+		user = users.get_current_user()
+		if user:
+			self.webSiteInfo['currentUserName'] = 'Hello ' + str(user) + "!"
+        #else:
+        #	self.webSiteInfo['pageTitle'] = 'Log In'
+
+		#make select the proper page as active
+		self.webSiteInfo['mainTabList'][0]['selected']='true'
 		return self.webSiteInfo
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-    	user = users.get_current_user()
-    	print user
-
+    	#create an instance of the webApplication class
     	page = webApplication()
 
-    	self.template_values = page.get()
-        #self.response.headers['Content-Type'] = 'text/html'
-        #self.response.write('<h1>Hello, webapp2 Worlda!</h1>')
+    	#load the home page & perform actions
+    	self.template_values = page.getHomePage()        
         
-        if user:
-        	self.template_values['pageTitle'] = user
-        else:
-        	self.redirect(users.create_login_url(self.request.uri))
-
-        #make select the proper page as active
-        self.template_values['mainTabList'][0]['selected']='true'
-        print self.template_values['mainTabList'][0]['selected']
+        #	self.redirect(users.create_login_url(self.request.uri))
 
         template = jinja_environment.get_template('Home/home.html')
         self.response.out.write(template.render(self.template_values))
-        
+class TutorialsPage(webapp2.RequestHandler):
+	def get(self):
+		print "testing"
 
-app = webapp2.WSGIApplication([('/', MainPage)])
+app = webapp2.WSGIApplication([
+	('/', MainPage),
+	('/Home', MainPage),
+	])
 
 def main():
     app.run()

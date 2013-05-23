@@ -22,11 +22,22 @@
 					<h1>My Embedded Life</h1>
 				</div>
 				<div class="right"> 
-					<h1>Chris Johnson</h1>
-					<p class="userName">unknown</p>
+					<h1>By Chris Johnson</h1>
+					<p class="userName">{{ currentUserName }}</p>
 				</div>
 			</div>
 			<div class="tabList">
+				{% for mainTab in mainTabList %}
+				{% if mainTab.selected is string %}
+					<div class="selected minor list">
+						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+					</div>
+				{% else %}
+					<div class="minor list">
+						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+					</div>
+				{% endif %}
+				{% endfor %}
 				{% block head %}
 				<h1>My Web Page!!</h1>
 				{% endblock %}
