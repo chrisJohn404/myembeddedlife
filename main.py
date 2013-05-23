@@ -16,6 +16,9 @@ jinja_environment = jinja2.Environment(
 
 class webApplication(object):
 	def __init__(self):
+		test = {
+			'dumb': 'dumb',
+		}
 		homePage = {
 			'title': 'Home',
 		}
