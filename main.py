@@ -1,7 +1,6 @@
 # Copyright 2012 Digital Inspiration
 # http://www.labnol.org/
 
-
 import webapp2
 import os
 import jinja2
