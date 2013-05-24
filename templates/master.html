@@ -35,6 +35,7 @@
 			</div>
 			<div class="tabList">
 				{% for mainTab in mainTabList %}
+				<div class="tabObj">
 				{% if mainTab.selected is string %}
 					<div class="selected minor list">
 						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
@@ -44,6 +45,7 @@
 						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
 					</div>
 				{% endif %}
+				</div>
 				{% endfor %}
 				{% block head %}
 				<h1>My Web Page!!</h1>
@@ -52,7 +54,7 @@
 		</div>
 	</div>
 	<div id="pageBody">
-		<div id="pageSideBar">
+		<div id="pageSideBar" class="bodyBlock">
 			<div id="pagecontentList">
 				<ul>
 					{% for mainTab in mainTabList %}
@@ -60,9 +62,13 @@
 					{% endfor %}
 				</ul>
 			</div>
-			<div id="pageContentBlock">
-				{% block content %}
-				{% endblock %}
+		</div>
+		<div id="mainPageBlockHolder" class="bodyBlock">
+			<div id="mainPageBlock">
+				<div id="pageContentBlock">
+					{% block content %}
+					{% endblock %}
+				</div>
 			</div>
 		</div>
 	</div>
