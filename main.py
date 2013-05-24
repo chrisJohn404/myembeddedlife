@@ -1,6 +1,6 @@
 # Copyright 2012 Digital Inspiration
 # http://www.labnol.org/
-
+#dg
 import webapp2
 import os
 import jinja2
@@ -15,6 +15,7 @@ jinja_environment = jinja2.Environment(
 
 class webApplication(object):
 	def __init__(self):
+		#h
 		#ooh la la
 		test = {
 			'dumb': 'dumb',
