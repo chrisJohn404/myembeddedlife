@@ -247,7 +247,12 @@ h2 {
 }
 #pageContentBlock
 {
-	left:10px;
+	position:inline;
+}
+#pageShiftLeft
+{
+	position:absolute;
+	left:5px;
 	padding: 0%;
 	margin: 0px;
 }

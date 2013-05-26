@@ -19,7 +19,6 @@ jinja_environment = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-		print "hello!!"
     	#create an instance of the webApplication class
 		self.page = webApplication()
 
@@ -31,15 +30,8 @@ class MainPage(webapp2.RequestHandler):
 		else:
 			self.userString = None
 
-		print "hello!!"
 		#get information to load webpage
-		self.page.returnPageString(str(self.request), self.userString)
-
-    	#load the home page & perform actions
-		self.template_values, self.pageStr = self.page.getHomePage()        
-        
-        #print self.request
-        #	self.redirect(users.create_login_url(self.request.uri))
+		self.template_values, self.pageStr = self.page.returnPageString(str(self.request.path), self.userString)
 
 		template = jinja_environment.get_template(self.pageStr)
 		self.response.out.write(template.render(self.template_values))
@@ -92,14 +84,14 @@ class AboutMePage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 	('/', MainPage),
 	('/Home', MainPage),
-	('/Tutorials', TutorialsPage),
-	('/Tutorials/.*', TutorialsPage),
-	('/Projects', ProjectsPage),
-	('/Projects/.*', ProjectsPage),
-	('/Bookshelf', BookshelfPage),
-	('/Bookshelf/.*', BookshelfPage),
-	('/AboutMe', AboutMePage),
-	('/AboutMe/.*', AboutMePage),
+	('/Tutorials', MainPage),
+	('/Tutorials/.*', MainPage),
+	('/Projects', MainPage),
+	('/Projects/.*', MainPage),
+	('/Bookshelf', MainPage),
+	('/Bookshelf/.*', MainPage),
+	('/AboutMe', MainPage),
+	('/AboutMe/.*', MainPage),
 	],
 debug=True)
 

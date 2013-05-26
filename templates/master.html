@@ -83,7 +83,7 @@
 				<div id="searchBarBlock">
 					{% block contentBlockPreHeader %}
 					<div class="header webPageCurrentPosition">
-						<h1> Page!</h1>
+						<h1>{{ activePage }}</h1>
 					</div>
 					<div class="header webPageSearchBar">
 						<div id="googleCSEDiv">
@@ -100,10 +100,12 @@
 						<gcse:searchresults></gcse:searchresults>
 					</div>
 					<div id="pageContentBlock">
-						{% block coolnessBlock %}
-						{% endblock %}
-						{% block content %}
-						{% endblock %}		
+						<div id="pageShiftLeft">
+							{% block coolnessBlock %}
+							{% endblock %}
+							{% block content %}
+							{% endblock %}		
+						</div>
 					</div>			
 				</div>
 			</div>

@@ -2,7 +2,7 @@
 #import webapp2
 import os
 import yaml
-#from google.appengine.api import users
+from google.appengine.api import users
 import logging
 
 
@@ -63,6 +63,10 @@ class webApplication(object):
 		#print self.webSiteInfo
 		self.webSiteInfo = data
 	def populateUserName(self, userString):
+		if(userString != None):
+			self.webSiteInfo['currentUserName'] = 'Hello ' + str(user) + "!"
+		else:
+			self.webSiteInfo['currentUserName'] = 'Log In'
 		return
 		print "populate user name"
 		#get the client's user-name
@@ -73,25 +77,40 @@ class webApplication(object):
 		#	self.webSiteInfo['pageTitle'] = 'Log In'
 
 	def returnPageString(self, reqStr, userStr):
-		templateDict = None
-		templateLocation = None
+
+		templateLocation = ""
+
+		#update the user-name string in the returned templateDictionary
+		self.populateUserName(userStr)
 
 		#open & return the proper .yaml parsed dictionary and template.html pointer/file
 		if(reqStr != None):
 
 			#shorten the string passed by the request handlers
 			reqStr = reqStr[1:len(reqStr)]
+			self.webSiteInfo['activePage'] = reqStr
+			if (reqStr == 'Home'):
+				self.webSiteInfo['mainTabList'][0]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][0]['template'])
+			elif (reqStr == 'Tutorials'):
+				self.webSiteInfo['mainTabList'][1]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][1]['template'])
+			elif (reqStr == 'Projects'):
+				self.webSiteInfo['mainTabList'][2]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][2]['template'])
+			elif (reqStr == 'Bookshelf'):
+				self.webSiteInfo['mainTabList'][3]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][3]['template'])
+			elif (reqStr == 'AboutMe'):
+				self.webSiteInfo['mainTabList'][4]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][4]['template'])
+			else:
+				self.webSiteInfo['mainTabList'][0]['selected']='true'
+				templateLocation = str(self.webSiteInfo['mainTabList'][0]['template'])
+		else:
+			return None, "Home/home.html"			
 
-			if (reqStr == '') or (reqStr == 'Home'):
-				templateDict = self.webSiteInfo
-				templateLocation = self.webSiteInfo['mainTabList'][0]['template']
-
-		#update the user-name string in the returned templateDictionary
-		if(userStr != None):
-			self.populateUserName(userStr)
-
-		return templateDict, templateLocation
-
+		return self.webSiteInfo, templateLocation
 
 	def getHomePage(self):
 		#self.populateUserName()
