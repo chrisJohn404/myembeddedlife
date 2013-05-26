@@ -4,22 +4,37 @@
 import yaml
 from webApplication import webApplication
 
+mainDict = yaml.load(open('index.yaml','rb'))['mainDict']
 def getHomePageTest():
-	page = webApplication()
+	page = webApplication(configDict = mainDict, DEBUG = False)
 	
-	#test default-page loading
-	template_values, pageStr = page.returnPageString('/', 'chris')
-	print "template loaded: " + pageStr
-	#print "dict returned: " + str(template_values)
-	if(pageStr != 'Home/home.html'):
+	testStrings = [
+		'/',
+		'/Home',
+		'/Tutorials',
+		'/Tutorials/Main',
+		'/Projects',
+		'/Bookshelf',
+		'/AboutMe',
+	]
+
+	resultStrings = [
+		'Home/home.html',
+		'Home/home.html',
+		'Home/home.html',
+		'Home/home.html',
+		'Home/home.html',
+		'Home/home.html',
+		'Home/home.html',
+	]
+	if(len(testStrings) != len(resultStrings)):
+		print "bad test-cases"
 		return True
-	template_valuesa, pageStr = page.getHomePage();
-	print "template loaded: " + pageStr
-	if(template_values == template_valuesa):
-		print "dict's match"
-	#test Home-page loading
-	template_values, pageStr = page.returnPageString('/Home', 'chris')
-	if(pageStr != 'Home/home.html'):
-		return True
+
+	for i in range(0,len(testStrings)):
+		template_values, pageStr = page.returnPageString(testStrings[i], 'chris')
+		if(pageStr != resultStrings[i]):
+			print "Failed URL test case: " + testStrings[i]
+			return True
 
 	return False

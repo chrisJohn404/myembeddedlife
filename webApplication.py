@@ -2,79 +2,27 @@
 #import webapp2
 import os
 import yaml
-from google.appengine.api import users
+#from google.appengine.api import users
 import logging
+import re
 
 
 class webApplication(object):
-	def __init__(self):
-		#h
-		#ooh la la
-		test = {
-			'dumb': 'dumb',
-		}
-		homePage = {
-			'title': 'Home',
-		}
-		instructables = {
-			'title': 'Instructables',
-			'Inst1': 'hello',
-			'Inst2': 'world',
-		}
-		projects = {
-			'title': 'Projects',
-			'Project1': 'Project1',
-			'Project2': 'Project2',
-		}
-		books = {
-			'title': 'Bookshelf',
-			'Book1': 'Book1',
-			'Book2': 'Book2',
-		}
-		aboutMePage = {
-			'title': 'AboutMe',
-		}
-		mainTabList = [
-			'Home',
-			'Instructables',
-			'Projects',
-			'Bookshelf',
-			'AboutMe',
-			'AboutMe',
-			'AboutMe',
-			'AboutMe',
-			'AboutMe',
-		]
-		mainTabs = {
-			'Tab1': homePage,
-			'Tab2': instructables,
-			'Tab3': projects,
-			'Tab4': books,
-			'Tab5': aboutMePage
-		}
-		self.webSiteInfo = {
-			'pageTitle': 'myEmbeddedLife',
-			'mainTabList': mainTabList,
-			'mainTabs': mainTabs,
-		}
-		data = yaml.load(open('index.yaml', 'rb'))
-		#print data
-		#print "\r\n\r\n"
-		#print self.webSiteInfo
-		self.webSiteInfo = data
+	def __init__(self, configDict=None, DEBUG=False):
+		self.debug = DEBUG
+		self.preLoadedDict = False
+		if(configDict == None):
+			self.webSiteInfo = yaml.load(open('index.yaml', 'rb'))
+		else:
+			self.webSiteInfo = configDict
+			self.preLoadedDict = True
+
 	def populateUserName(self, userString):
 		if(userString != None):
-			self.webSiteInfo['currentUserName'] = 'Hello ' + str(user) + "!"
+			self.webSiteInfo['currentUserName'] = 'Hello ' + str(userString) + "!"
 		else:
 			self.webSiteInfo['currentUserName'] = 'Log In'
 		return
-		print "populate user name"
-		#get the client's user-name
-		#user = users.get_current_user()
-		#if user:
-		#	self.webSiteInfo['currentUserName'] = 'Hello ' + str(user) + "!"
-		#else:
-		#	self.webSiteInfo['pageTitle'] = 'Log In'
 
 	def returnPageString(self, reqStr, userStr):
 
@@ -86,22 +34,37 @@ class webApplication(object):
 		#open & return the proper .yaml parsed dictionary and template.html pointer/file
 		if(reqStr != None):
 
+			#Parse the desired path
+			pathArray = re.split(r'/',reqStr)
+			if(self.debug):
+				print pathArray[1]
+
 			#shorten the string passed by the request handlers
 			reqStr = reqStr[1:len(reqStr)]
-			self.webSiteInfo['activePage'] = reqStr
-			if (reqStr == 'Home'):
+
+			#update the page-title string
+			self.webSiteInfo['pageTitle'] = pathArray[1]
+
+			#update the active-page sub-header
+			if(self.preLoadedDict != True):
+				self.webSiteInfo['activePage'] = "pre-loaded dict"
+			else:
+				self.webSiteInfo['activePage'] = reqStr
+
+			#switch between main path's before starting to dig deaper into the .yaml mess
+			if (pathArray[1] == 'Home'):
 				self.webSiteInfo['mainTabList'][0]['selected']='true'
 				templateLocation = str(self.webSiteInfo['mainTabList'][0]['template'])
-			elif (reqStr == 'Tutorials'):
+			elif (pathArray[1] == 'Tutorials'):
 				self.webSiteInfo['mainTabList'][1]['selected']='true'
 				templateLocation = str(self.webSiteInfo['mainTabList'][1]['template'])
-			elif (reqStr == 'Projects'):
+			elif (pathArray[1] == 'Projects'):
 				self.webSiteInfo['mainTabList'][2]['selected']='true'
 				templateLocation = str(self.webSiteInfo['mainTabList'][2]['template'])
-			elif (reqStr == 'Bookshelf'):
+			elif (pathArray[1] == 'Bookshelf'):
 				self.webSiteInfo['mainTabList'][3]['selected']='true'
 				templateLocation = str(self.webSiteInfo['mainTabList'][3]['template'])
-			elif (reqStr == 'AboutMe'):
+			elif (pathArray[1] == 'AboutMe'):
 				self.webSiteInfo['mainTabList'][4]['selected']='true'
 				templateLocation = str(self.webSiteInfo['mainTabList'][4]['template'])
 			else:
@@ -110,46 +73,26 @@ class webApplication(object):
 		else:
 			return None, "Home/home.html"			
 
+		#return the required website-info dict allowing jinja to populate the  
+		# template & the appropriate template-file location
 		return self.webSiteInfo, templateLocation
 
-	def getHomePage(self):
-		#self.populateUserName()
+	def fixDict(self, reqStr):
+		if(reqStr != None):
 
-		#make select the proper page as active
-		self.webSiteInfo['mainTabList'][0]['selected']='true'
-		return self.webSiteInfo, self.webSiteInfo['mainTabList'][0]['template']
+			#Parse the desired path
+			pathArray = re.split(r'/',reqStr)
 
-	def getTutorialsPage(self, reqStr):
-		reqStr = str(reqStr.path)
-		#self.populateUserName()
-
-		#make select the proper page as active
-		self.webSiteInfo['mainTabList'][1]['selected']='true'
-		return self.webSiteInfo, self.webSiteInfo['mainTabList'][1]['template']
-
-	def getProjectsPage(self, reqStr):
-		reqStr = str(reqStr.path)
-		#self.populateUserName()
-
-		#make select the proper page as active
-		self.webSiteInfo['mainTabList'][2]['selected']='true'
-		return self.webSiteInfo, self.webSiteInfo['mainTabList'][2]['template']
-
-	def getBookshelfPage(self, reqStr):
-		#print reqStr.url
-		#print reqStr.path
-		reqStr = str(reqStr.path)
-
-		#self.populateUserName()
-
-		#make select the proper page as active
-		self.webSiteInfo['mainTabList'][3]['selected']='true'
-		return self.webSiteInfo, self.webSiteInfo['mainTabList'][3]['template']
-
-	def getAboutMePage(self, reqStr):
-		reqStr = str(reqStr.path)
-		#self.populateUserName()
-
-		#make select the proper page as active
-		self.webSiteInfo['mainTabList'][4]['selected']='true'
-		return self.webSiteInfo, self.webSiteInfo['mainTabList'][4]['template']
+			#switch between main path's before starting to dig deaper into the .yaml mess
+			if (pathArray[1] == 'Home'):
+				self.webSiteInfo['mainTabList'][0]['selected']=None
+			elif (pathArray[1] == 'Tutorials'):
+				self.webSiteInfo['mainTabList'][1]['selected']=None
+			elif (pathArray[1] == 'Projects'):
+				self.webSiteInfo['mainTabList'][2]['selected']=None
+			elif (pathArray[1] == 'Bookshelf'):
+				self.webSiteInfo['mainTabList'][3]['selected']=None
+			elif (pathArray[1] == 'AboutMe'):
+				self.webSiteInfo['mainTabList'][4]['selected']=None
+			else:
+				self.webSiteInfo['mainTabList'][0]['selected']=None

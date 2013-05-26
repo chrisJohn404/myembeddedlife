@@ -16,11 +16,14 @@ jinja_environment = jinja2.Environment(
 	#defines the jinja_template location
 	loader = jinja2.FileSystemLoader(os.path.dirname(__file__)+"/templates"))
 
+configFile = yaml.load(open('index.yaml', 'rb'))
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+
+		self.mainPageDict = self.app.config.get('mainDict')
     	#create an instance of the webApplication class
-		self.page = webApplication()
+		self.page = webApplication(configDict = self.mainPageDict)
 
 		#get the client's user-name
 		user = users.get_current_user()
@@ -31,55 +34,13 @@ class MainPage(webapp2.RequestHandler):
 			self.userString = None
 
 		#get information to load webpage
-		self.template_values, self.pageStr = self.page.returnPageString(str(self.request.path), self.userString)
+		#request options: path, url, (none)
+		reqStr = str(self.request.path)
+		self.template_values, self.pageStr = self.page.returnPageString(reqStr, self.userString)
 
 		template = jinja_environment.get_template(self.pageStr)
 		self.response.out.write(template.render(self.template_values))
-
-		
-class TutorialsPage(webapp2.RequestHandler):
-	def get(self):
-		#create an instance of the webApplication class
-		page = webApplication()
-
-		#load the home page & perform actions
-		self.template_values, self.pageStr = page.getTutorialsPage(self.request) 
-
-		template = jinja_environment.get_template(self.pageStr)
-		self.response.out.write(template.render(self.template_values))
-
-class ProjectsPage(webapp2.RequestHandler):
-	def get(self):
-		#create an instance of the webApplication class
-		page = webApplication()
-
-    	#load the home page & perform actions
-		self.template_values, self.pageStr = page.getProjectsPage(self.request) 
-
-		template = jinja_environment.get_template(self.pageStr)
-		self.response.out.write(template.render(self.template_values))
-
-class BookshelfPage(webapp2.RequestHandler):
-	def get(self):
-		#create an instance of the webApplication class
-		page = webApplication()
-
-    	#load the home page & perform actions
-		self.template_values, self.pageStr = page.getBookshelfPage(self.request) 
-
-		template = jinja_environment.get_template(self.pageStr)
-		self.response.out.write(template.render(self.template_values))
-
-class AboutMePage(webapp2.RequestHandler):
-	def get(self):
-		#create an instance of the webApplication class
-		page = webApplication()
-
-    	#load the home page & perform actions
-		self.template_values, self.pageStr = page.getAboutMePage(self.request) 
-
-		template = jinja_environment.get_template(self.pageStr)
-		self.response.out.write(template.render(self.template_values))
+		self.page.fixDict(reqStr)
 
 app = webapp2.WSGIApplication([
 	('/', MainPage),
@@ -93,7 +54,7 @@ app = webapp2.WSGIApplication([
 	('/AboutMe', MainPage),
 	('/AboutMe/.*', MainPage),
 	],
-debug=True)
+debug=True, config=configFile)
 
 def main():
 	logging.getLogger().setLevel(logging.DEBUG)
