@@ -23,14 +23,85 @@
 	<!-- script to enable the google-search cse feature -->
 	<!-- Put the following javascript before the closing </head> tag. -->
 	<script>
-	  (function() {
-	    var cx = '004185851077072532640:ucst63as0kc';
-	    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-	    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-	        '//www.google.com/cse/cse.js?cx=' + cx;
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-	    alert('hello');
-	  })();
+		var windowTimer;
+		var update = function()
+		{
+			//console.log($('___gcse_1').style);
+			defView = document.defaultView
+
+			//console.log(document.defaultView.$('___gcse_1'));
+			//console.log(document.getElementById('___gcse_1'));
+		}
+		var renderSearchElement = function() {
+			google.search.cse.element.render(
+				{
+					div: "googleCSEDiv",
+					tag: 'search'
+				}
+			);
+			google.search.cse.element.render(
+				{
+					div: "googleResultsBlock",
+					tag: 'search'
+				}
+			);
+		};
+		var myCallback = function() {
+			console.log(google);
+			if (document.readyState == 'complete') {
+				renderSearchElement();
+			} else {
+				google.setOnLoadCallback(renderSearchElement, true);
+			}
+		};
+		//window.__gcse = {
+		//	parsetags: 'explicit',
+		//	callback: myCallback
+		//};
+		(function() {
+			var cx = '004185851077072532640:ucst63as0kc';
+			var gcse = document.createElement('script'); 
+			gcse.type = 'text/javascript'; 
+			gcse.async = true;
+			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+				'//www.google.com/cse/cse.js?cx=' + cx;
+			var s = document.getElementsByTagName('script')[0]; 
+			s.parentNode.insertBefore(gcse, s);
+			console.log(s.parentNode);
+		})();
+		var gseFunc = function()
+		{
+			console.log('blah');
+		}
+		$(document).ready(function()
+		{
+			console.log('loaded');
+			console.log($('.gsc-search-button').__proto__);
+			$('.gsc-search-button').click(function()
+			{
+				console.log('searchClicked');
+			});
+			$('.gsc-search-button').bind('click', gseFunc());
+			console.log($('___gcse_1'));
+			windowTimer = setInterval(update, 1000);
+			//$('.gsc-search-button').style.display="none";
+		});
+		$('.gsc-search-button').click(function() 
+		{
+			console.log('searchChanged');
+		});
+		$('.gsc-search-button-v2').click(function() 
+		{
+			console.log('searchChanged2');
+		});
+		$('.gsc-clear-button').click(function() 
+		{
+			console.log('searchChanged');
+		});
+		$('googleResultsBlock').change(function() 
+		{
+			console.log('resultsChanged');
+		});
 	</script>
 </head>
 
@@ -84,7 +155,7 @@
 						<h1> Page!</h1>
 					</div>
 					<div class="header webPageSearchBar">
-						<div class="googleCSEDiv">
+						<div id="googleCSEDiv">
 							<!-- Place this tag where you want the search box to render -->
 							<!--<div id="cse" style="width:100%;">Loading...</div>-->
 							<gcse:searchbox></gcse:searchbox>
@@ -100,7 +171,7 @@
 					{% block content %}
 					{% endblock %}
 					<!-- Place this tag where you want the search results to render -->
-					<div class="googleResultsBlock">
+					<div id="googleResultsBlock">
 						<gcse:searchresults></gcse:searchresults> 
 					</div>
 				</div>

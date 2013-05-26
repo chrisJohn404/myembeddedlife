@@ -210,10 +210,15 @@ h2 {
 {
 	right: 0px;
 }
-#searchBarBlock .googleCSEDiv
+#searchBarBlock #googleCSEDiv
 {
 	position: absolute;
 	top: 22%;
+}
+#searchBarBlock 
+#cse
+{
+	background-color: #4D0000;
 }
 
 #mainPageBlock
@@ -234,11 +239,12 @@ h2 {
 	padding: 0%;
 	margin: 0px;
 }
-#pageContentBlock .googleResultsBlock
+#pageContentBlock #googleResultsBlock
 {
 	display:inline;
 }
-#___gcse_1
+
+#googleResultsBlock
 {
-	#searchBarBlock.display:none;
+	position: inline;
 }
