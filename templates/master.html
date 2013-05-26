@@ -19,6 +19,19 @@
 	<meta property="og:url" content="myembeddedlife.appspot.com">
 	<meta property="og:image" content="myembeddedlife.appspot.com/icon-shadow.png">
 	<meta property="og:type" content="website">
+
+	<!-- script to enable the google-search cse feature -->
+	<!-- Put the following javascript before the closing </head> tag. -->
+	<script>
+	  (function() {
+	    var cx = '004185851077072532640:ucst63as0kc';
+	    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+	    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+	        '//www.google.com/cse/cse.js?cx=' + cx;
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+	    alert('hello');
+	  })();
+	</script>
 </head>
 
 <body id="mainPage">
@@ -64,13 +77,37 @@
 			</div>
 		</div>
 		<div id="mainPageBlockHolder" class="bodyBlock">
+			<div id="searchBarHeaderBlock">
+				<div id="searchBarBlock">
+					{% block contentBlockPreHeader %}
+					<div class="header webPageCurrentPosition">
+						<h1> Page!</h1>
+					</div>
+					<div class="header webPageSearchBar">
+						<div class="googleCSEDiv">
+							<!-- Place this tag where you want the search box to render -->
+							<!--<div id="cse" style="width:100%;">Loading...</div>-->
+							<gcse:searchbox></gcse:searchbox>
+						</div>
+					</div>
+					{% endblock %}
+				</div>
+			</div>
 			<div id="mainPageBlock">
 				<div id="pageContentBlock">
+					{% block coolnessBlock %}
+					{% endblock %}
 					{% block content %}
 					{% endblock %}
+					<!-- Place this tag where you want the search results to render -->
+					<div class="googleResultsBlock">
+						<gcse:searchresults></gcse:searchresults> 
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
 </html>
+
+

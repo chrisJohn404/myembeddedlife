@@ -15,7 +15,7 @@ h2 {
 {
 	width: 100%;
 	height: 114px;
-	min-width: 1000px;
+	min-width: 800px;
 	left: 0px;
 	top:0px;
 	//background-color: #909090;
@@ -40,7 +40,7 @@ h2 {
 	//background-color: #8D4846;	
 	color: white;
 	font-family: 'Raleway', 'san-serif';
-	font-size: 16px;
+	font-size: 20px;
 	position: absolute;
 }
 #header .major
@@ -116,10 +116,10 @@ h2 {
 	position: absolute;
 	text-align: center;
 	top: 30%;
-	left: 6%;
+	left: 3%;
 	color: #4D0000;
 	//color: #CCCCCC;
-	font: 20px Georgia, "Times New Roman", Times, serif;
+	font: 17px Georgia, "Times New Roman", Times, serif;
 	text-decoration:none;
 }
 #header .selected a
@@ -135,7 +135,7 @@ h2 {
 {
 	width: 100%;
 	height: 100%;
-	min-width: 1000px;
+	min-width: 800px;
 	top: 112px;
 	left: 0px;
 	//background-color: #909090;
@@ -154,11 +154,20 @@ h2 {
 	position: absolute;
 	width: 12.5%;
 	height: 100%;
+	left: 0px;
+}
+#pagecontentList ul
+{
+	left:0px;
+	//text-indent: 5px;
+	padding: 20%;
+	//margin: 0px;
 }
 #mainPageBlockHolder
 {
 	border-width: 15px;
-	border-top:35px;
+	//border-top:50px;
+	border-top:0px;
 	border-style: solid;
 	border-color: #4D0000;
 	background-color: #E6E6E6;
@@ -167,13 +176,69 @@ h2 {
 	height: 100%;
 	position: absolute;
 }
+#searchBarHeaderBlock
+{
+	position: inline;
+	top: 0px;
+	height: 75px;
+	width: 100%;
+	float: left;
+}
+#searchBarBlock
+{
+	position: absolute;
+	display: inline;
+	top: 0px;
+	height: 75px;
+	width: 100%;
+	background-color: #4D0000;
+	z-index:3;
+}
+#searchBarBlock .header
+{
+	top: 22%;
+	height: 75px;
+	width: 40%;
+	position: absolute;
+
+}
+#searchBarBlock .webPageCurrentPosition
+{
+	left: 0px;
+}
+#searchBarBlock .webPageSearchBar
+{
+	right: 0px;
+}
+#searchBarBlock .googleCSEDiv
+{
+	position: absolute;
+	top: 22%;
+}
+
 #mainPageBlock
 {
 	position: absolute;
-	top: 50px;
-	left: 20px;
+	top: 75px;
+	left: 0px;
 	height: 100%;
 	width: 100%;
 	position: inline-block;
 }
-
+#pageContentBlock
+{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left:0px;
+	padding: 0%;
+	margin: 0px;
+}
+#pageContentBlock .googleResultsBlock
+{
+	display:inline;
+}
+#___gcse_1
+{
+	#searchBarBlock.display:none;
+}
