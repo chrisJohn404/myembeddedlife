@@ -22,87 +22,36 @@
 
 	<!-- script to enable the google-search cse feature -->
 	<!-- Put the following javascript before the closing </head> tag. -->
-	<script>
-		var windowTimer;
-		var update = function()
-		{
-			//console.log($('___gcse_1').style);
-			defView = document.defaultView
+	<script src="//www.google.com/jsapi" type="text/javascript"></script>
+<script>
+	// Always google.load('search', '1', ....) at the beginning with all the
+	// necessary options. Later google.load('search', ...) does not overwrite the
+	// previous ones.
+	google.load('search', '1',
+		{language : 'en', style : google.loader.themes.MINIMALIST});
 
-			//console.log(document.defaultView.$('___gcse_1'));
-			//console.log(document.getElementById('___gcse_1'));
+	var customSearchControl = null;
+	// executeQuery() is only required if the control showing results is on the
+	// same page as your searchbox.
+	function executeQuery() {
+		var input = document.getElementById('cse-search-input-box-id');
+		if (input.value == '') {
+			customSearchControl.clearAllResults();
+		} else {
+			customSearchControl.execute(input.value)
 		}
-		var renderSearchElement = function() {
-			google.search.cse.element.render(
-				{
-					div: "googleCSEDiv",
-					tag: 'search'
-				}
-			);
-			google.search.cse.element.render(
-				{
-					div: "googleResultsBlock",
-					tag: 'search'
-				}
-			);
-		};
-		var myCallback = function() {
-			console.log(google);
-			if (document.readyState == 'complete') {
-				renderSearchElement();
-			} else {
-				google.setOnLoadCallback(renderSearchElement, true);
-			}
-		};
-		//window.__gcse = {
-		//	parsetags: 'explicit',
-		//	callback: myCallback
-		//};
-		(function() {
-			var cx = '004185851077072532640:ucst63as0kc';
-			var gcse = document.createElement('script'); 
-			gcse.type = 'text/javascript'; 
-			gcse.async = true;
-			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-				'//www.google.com/cse/cse.js?cx=' + cx;
-			var s = document.getElementsByTagName('script')[0]; 
-			s.parentNode.insertBefore(gcse, s);
-			console.log(s.parentNode);
-		})();
-		var gseFunc = function()
-		{
-			console.log('blah');
-		}
-		$(document).ready(function()
-		{
-			console.log('loaded');
-			console.log($('.gsc-search-button').__proto__);
-			$('.gsc-search-button').click(function()
-			{
-				console.log('searchClicked');
-			});
-			$('.gsc-search-button').bind('click', gseFunc());
-			console.log($('___gcse_1'));
-			windowTimer = setInterval(update, 1000);
-			//$('.gsc-search-button').style.display="none";
-		});
-		$('.gsc-search-button').click(function() 
-		{
-			console.log('searchChanged');
-		});
-		$('.gsc-search-button-v2').click(function() 
-		{
-			console.log('searchChanged2');
-		});
-		$('.gsc-clear-button').click(function() 
-		{
-			console.log('searchChanged');
-		});
-		$('googleResultsBlock').change(function() 
-		{
-			console.log('resultsChanged');
-		});
-	</script>
+		return false;
+	}
+	google.setOnLoadCallback(function() {
+		customSearchControl = new google.search.CustomSearchControl(
+			'004185851077072532640:ucst63as0kc');
+		var options = new google.search.DrawOptions();
+		options.enableSearchResultsOnly();
+		customSearchControl.draw('cse-result-section-id', options);
+		console.log('newResult')
+	}, true);
+</script>
+<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
 </head>
 
 <body id="mainPage">
@@ -158,7 +107,36 @@
 						<div id="googleCSEDiv">
 							<!-- Place this tag where you want the search box to render -->
 							<!--<div id="cse" style="width:100%;">Loading...</div>-->
-							<gcse:searchbox></gcse:searchbox>
+							<!--<gcse:searchbox></gcse:searchbox>-->
+							<!--<div id='cse-search-form' style='width: 100%;'>Loading</div>
+							<form id="cse-search-box" action="http://google.com/cse">
+								<input type="hidden" name="cx" value="004185851077072532640:ucst63as0kc" />
+								<input type="hidden" name="ie" value="UTF-8" />
+								<input type="text" name="q" size="31" />
+								<input type="submit" name="sa" value="Search" />
+							</form>-->
+							<!--<form action="http://www.google.com/cse" id="cse-search-box">-->
+							<!--<form onsubmit="return executeQuery();" id="cse-search-box">
+								<div>
+									<input type="hidden" name="cx" value="004185851077072532640:ucst63as0kc">
+									<input type="hidden" name="ie" value="UTF-8">
+									<input type="text" name="q" size="31" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat;">
+									<input type="submit" name="sa" value="Search">
+								</div>
+								<input name="siteurl" type="hidden" value="googlecustomsearch.appspot.com/element/layoutdemo/branding_style.html">
+								<input name="ref" type="hidden" value="support.google.com/customsearch/bin/answer.py?hl=en&amp;answer=2631084&amp;from=70312&amp;rd=1">
+								<input name="ss" type="hidden" value="0j0j1">
+							</form>
+							<script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>-->
+							<!-- Search box form -->
+							<form onsubmit="return executeQuery();" id="cse-search-box-form-id">
+								<!-- This is the input searc box -->
+								<input type="text" id="cse-search-input-box-id" size="25" autocomplete="on"/>
+								<!-- This is the search button -->
+								<input type="submit" value="Search"/>
+							</form>
+							<script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box-form-id&inputbox=cse-search-input-box-id"></script>
+							<!-- End of search box form -->
 						</div>
 					</div>
 					{% endblock %}
@@ -172,8 +150,10 @@
 					{% endblock %}
 					<!-- Place this tag where you want the search results to render -->
 					<div id="googleResultsBlock">
-						<gcse:searchresults></gcse:searchresults> 
+						<gcse:searchresults-only></gcse:searchresults-only>
+						<div id='cse' style='width: 100%;'></div>
 					</div>
+					<div id="cse-result-section-id" style="width:100%;"></div>
 				</div>
 			</div>
 		</div>
