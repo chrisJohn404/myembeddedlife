@@ -87,24 +87,24 @@
 					</div>
 					<div class="header webPageSearchBar">
 						<div id="googleCSEDiv">
-							<gcse:searchbox>></gcse:searchbox>>
+							<gcse:searchbox></gcse:searchbox>
 						</div>
 					</div>
 					{% endblock %}
 				</div>
 			</div>
 			<div id="mainPageBlock">
-				<div id="pageContentBlock">
-					{% block coolnessBlock %}
-					{% endblock %}
-					{% block content %}
-					{% endblock %}
+				<div id="subPageContentBlock">
 					<!-- Place this tag where you want the search results to render -->
 					<div id="googleResultsBlock">
 						<gcse:searchresults></gcse:searchresults>
-						<div id='cse' style='width: 100%;'></div>
 					</div>
-					<div id="cse-result-section-id" style="width:100%;"></div>
+					<div id="pageContentBlock">
+						{% block coolnessBlock %}
+						{% endblock %}
+						{% block content %}
+						{% endblock %}		
+					</div>			
 				</div>
 			</div>
 		</div>
