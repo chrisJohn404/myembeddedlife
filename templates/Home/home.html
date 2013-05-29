@@ -2,8 +2,13 @@
 
 <!--Block For Changing Page Header-->
 {% block head %}
-	
 {% endblock %}
+
+<!-- Block for changing any necessary page-styles -->
+{% block pageStyles %}
+<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 
 {% block coolnessBlock %}
 <h1> Wahoo! </h1>
@@ -19,5 +24,21 @@
 	<p>
 		hello world!! woot!
 	</p>
+</div>
+<div id="contentBlocks">
+{% for featuredPage in mainTabList.0.featuredPages %}
+	<div id="contentBlock">
+		<div id="contentBlockMainBody">
+			<div id="contentBlockTitle">
+				<p> {{ featuredPage.title }} </p>
+			</div>
+			<div id="contentBlockDescription">
+				<p> {{ featuredPage.description }} </p>
+			</div>
+			<div id="contentBlockImage">
+			</div>
+		</div>
+	</div>
+{% endfor %}
 </div>
 {% endblock %}

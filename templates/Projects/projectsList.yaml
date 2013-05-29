@@ -1,0 +1,9 @@
+projectList:
+  - 'PJ1':
+    title: 'MyProject1'
+    description: |
+        This project1 is super cool!
+  - 'PJ2':
+    title: 'MyProject2'
+    description: |
+        This project2 is super cool!

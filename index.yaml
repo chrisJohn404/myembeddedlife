@@ -11,12 +11,26 @@ mainDict:
       template: 'Home/home.html'
       description: |
           Welcome to my website!
+      featuredPages:
+        - 'featured1':
+          type: 'Tutorial'
+          title: 'Tutorial1'
+          contentFile:
+          description: |
+              This is my first featured page!
+        - 'featured2':
+          type: 'Project'
+          title: 'Project1'
+          contentFile:
+          description: |
+              This is my second featured page!
 
   #Information to be displayed under the instructables tab
     - 'Tutorials':
       selected:
       title: 'Tutorials'
       template: 'Home/home.html'
+      location: 'templates/Tutorials/tutorialsList.yaml'
       description: |
           This is where you can find a large amount of information regarding several different fields, CS, EE, ECE, & Climbing!  They will hopefully provide insight, tips, and assistance as to how this complex world of technology works.
 
@@ -25,6 +39,7 @@ mainDict:
       selected:
       title: 'Projects'
       template: 'Home/home.html'
+      location: 'templates/Projects/projectsList.yaml'
       description: |
           This is where you can find a list of all my different projects, some are quite interesting.
 
@@ -33,6 +48,7 @@ mainDict:
       selected:
       title: 'Bookshelf'
       template: 'Home/home.html'
+      location: 'templates/Tutorials/bookList.yaml'
       description: |
           This is where you can find a list of books, websites, or youtube videos that I find to be interesting.
 
