@@ -3,7 +3,17 @@ projectList:
     title: 'MyTutorial1'
     description: |
         This Tutorial1 is super cool!
+    dataLocation: ''
+    tags:
+      - 'test1'
+      - 'test2'
+      - 'test3'
   - 'T2':
     title: 'MyTutorial2'
     description: |
         This Tutorial2 is super cool!
+    dataLocation: 'embedded/'
+    tags:
+      - 'test1'
+      - 'test2'
+      - 'test3'
