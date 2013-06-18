@@ -156,6 +156,7 @@ h2 {
 	height: 100%;
 	left: 0px;
 }
+
 #pagecontentList ul
 {
 	left:0px;
@@ -204,6 +205,7 @@ h2 {
 }
 #searchBarBlock .webPageCurrentPosition
 {
+	color: #CCCCCC;
 	left: 0px;
 }
 #searchBarBlock .webPageSearchBar
