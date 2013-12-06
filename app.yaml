@@ -1,3 +1,8 @@
+#Please view the google page for documentation: https://developers.google.com/appengine/docs/python/config/appconfig
+#
+#Notes:
+#1. The .yaml file syntax is super strict, make sure there is a space after the colon!!
+#2. To re-load the app.yaml file the app must be stopped and restarted from the Google App Engine Launcher.
 application: myembeddedlife
 version: 0
 runtime: python27
@@ -9,22 +14,33 @@ libraries:
   version: latest
 - name: jinja2
   version: latest
+- name: PIL
+  version: latest
+
+admin_console:
+  pages:
+  - name: Test-Admin-Console
+    url: /main.html
 
 handlers:
 - url: /(favicon.ico)
   static_files: \1
-  upload: favicon.png
+  upload: siteRequired/favicon.png
 - url: /(robots.txt)
   static_files: \1
-  upload: robots.txt
+  upload: siteRequired/robots.txt
 - url: /(sitemap.xml)
   static_files: \1
-  upload: sitemap.xml
+  upload: siteRequired/sitemap.xml
 - url: /(google5228ccde1df7ede3.html)
   static_files: \1
-  upload: google5228ccde1df7ede3.html
+  upload: siteRequired/google5228ccde1df7ede3.html
 - url: /(.*\.(gif|png|jpg|ico|js|css|xml))
   static_files: \1
   upload: (.*\.(gif|png|jpg|ico|js|css|xml))
+- url: /admin/.*
+  script: admin.app
+  login: admin
 - url: /.*
   script: main.app
+  secure: optional
