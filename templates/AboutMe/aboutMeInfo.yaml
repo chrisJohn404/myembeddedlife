@@ -1,0 +1,16 @@
+subTabs:
+  - 'Activities'
+  - 'Resume'
+pages:
+  - 'AttributeOne':
+    title: 'climb'
+    description: |
+        This attribute is super cool!
+  - 'Attribute2':
+    title: 'bb'
+    description: |
+        This attribute is super cool!
+  - 'Attribute3':
+    title: 'Boogala'
+    description: |
+        Booga-wooga doo!!

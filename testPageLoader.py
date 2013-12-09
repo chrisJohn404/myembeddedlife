@@ -5,27 +5,50 @@ import yaml
 from webApplication import webApplication
 
 mainDict = yaml.load(open('index.yaml','rb'))['mainDict']
+
+'''
+Unit test for testing whether or not the right .html file is being loaded.
+
+The page that is loaded is determined by the index.yaml file & the code in the webApplication.py
+'''
 def getHomePageTest():
-	page = webApplication(configDict = mainDict, DEBUG = False)
+	print 'Creating WebApp Instance'
+	page = webApplication(configDict = mainDict, DEBUG = True)
 	
 	testStrings = [
 		'/',
 		'/Home',
 		'/Tutorials',
-		'/Tutorials/Main',
+		'/Tutorials/Not A Page',
+		'/tutorials',
 		'/Projects',
+		'/projects',
+		'/BookShelf',
+		'/bookShelf',
+		'/bookshelf',
 		'/Bookshelf',
 		'/AboutMe',
+		'/aboutMe',
+		'/aboutme',
+		'/Aboutme',
 	]
 
 	resultStrings = [
 		'Home/home.html',
 		'Home/home.html',
-		'Home/home.html',
-		'Home/home.html',
-		'Home/home.html',
-		'Home/home.html',
-		'Home/home.html',
+		'Tutorials/tutorialsTab.html',
+		'Tutorials/tutorialsTab.html',
+		'Tutorials/tutorialsTab.html',
+		'Projects/projectsTab.html',
+		'Projects/projectsTab.html',
+		'Bookshelf/bookshelfTab.html',
+		'Bookshelf/bookshelfTab.html',
+		'Bookshelf/bookshelfTab.html',
+		'Bookshelf/bookshelfTab.html',
+		'AboutMe/aboutMeTab.html',
+		'AboutMe/aboutMeTab.html',
+		'AboutMe/aboutMeTab.html',
+		'AboutMe/aboutMeTab.html',
 	]
 	if(len(testStrings) != len(resultStrings)):
 		print "bad test-cases"
@@ -35,6 +58,9 @@ def getHomePageTest():
 		template_values, pageStr = page.returnPageString(testStrings[i], 'chris')
 		if(pageStr != resultStrings[i]):
 			print "Failed URL test case: " + testStrings[i]
+			#print 'Returned Pages: ',pageStr
 			return True
-
+		print 'Request',testStrings[i]
+		if((testStrings[i] == '/Projects')):
+			print template_values['pageData']
 	return False

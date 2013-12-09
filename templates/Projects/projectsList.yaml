@@ -1,9 +1,22 @@
-projectList:
+pages:
   - 'PJ1':
     title: 'MyProject1'
     description: |
         This project1 is super cool!
+    subPages:
+      - 'p1'
+      - 'p2'
   - 'PJ2':
     title: 'MyProject2'
     description: |
         This project2 is super cool!
+    subPages:
+      - 'p1'
+      - 'p2'
+  - 'PJ3':
+    title: 'Boogala'
+    description: |
+        Booga-wooga doo!!
+    subPages:
+      - 'p1'
+      - 'p2'

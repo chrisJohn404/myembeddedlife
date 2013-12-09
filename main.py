@@ -31,11 +31,8 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
     	
 		self.mainPageDict = self.app.config.get('mainDict')
+		#log(self.mainPageDict)
 		
-		data = 'yo'
-		logging.info(logging.getLevelName(logging.INFO))
-		logging.debug(data)
-		#log(data)
     	#create an instance of the webApplication class
 		self.page = webApplication(configDict = self.mainPageDict)
 

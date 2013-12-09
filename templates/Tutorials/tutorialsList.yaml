@@ -1,4 +1,4 @@
-projectList:
+pages:
   - 'T1':
     title: 'MyTutorial1'
     description: |
@@ -12,7 +12,6 @@ projectList:
     title: 'MyTutorial2'
     description: |
         This Tutorial2 is super cool!
-    dataLocation: 'embedded/'
     tags:
       - 'test1'
       - 'test2'
