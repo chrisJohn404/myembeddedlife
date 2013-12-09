@@ -1,20 +1,23 @@
 pages:
-  - 'PJ1':
-    title: 'MyProject1'
+  - 'myEmbeddedLife':
+    title: 'myEmbeddedLife'
     description: |
-        This project1 is super cool!
+        The website you are currently browsing!
+    template: 'Projects/PJ1/PJ1.html'
     subPages:
-      - 'p1'
-      - 'p2'
+      - 'sub1':
+        title: 'sub1'
+        template: 'Projects/PJ1/sub1.html'
+      - 'sub2'
   - 'PJ2':
-    title: 'MyProject2'
+    title: 'PJ2'
     description: |
         This project2 is super cool!
     subPages:
       - 'p1'
       - 'p2'
   - 'PJ3':
-    title: 'Boogala'
+    title: 'PJ3'
     description: |
         Booga-wooga doo!!
     subPages:

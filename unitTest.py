@@ -16,6 +16,7 @@ import unittest
 
 print "Starting Test"
 if(getHomePageTest()):
-	print "Error-getHomePageTest"
-
-print "Test Finished"
+	print "!!ERROR!! - getHomePageTest"
+else:
+	print "All Tests Pass"
+#print "Test Finished"

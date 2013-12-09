@@ -17,6 +17,22 @@
 <!--Block For Changing Page Content-->
 {% block content %}
 <div>
-	<p>loaded aboutMeNotFound.html</p>
+	<p>loaded PJ1.html</p>
+</div>
+<div id="contentBlocks">
+{% for page in pageData.subPages %}
+	<div id="contentBlock">
+		<div id="contentBlockMainBody">
+			<div id="contentBlockTitle">
+				<p> {{ page.title }} </p>
+			</div>
+			<div id="contentBlockDescription">
+				<p> {{ page.description }} </p>
+			</div>
+			<div id="contentBlockImage">
+			</div>
+		</div>
+	</div>
+{% endfor %}
 </div>
 {% endblock %}

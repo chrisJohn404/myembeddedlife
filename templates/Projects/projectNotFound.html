@@ -2,39 +2,6 @@
 
 <!--Block For Changing Page Header-->
 {% block head %}
-<script language="javascript" type="text/javascript">
-	xmlhttp = new XMLHttpRequest();
-
-	function getScores()
-	{
-		xmlhttp.onreadystatechange = 
-		function()
-		{
-			/* xml status numbers
-			* 0: Hasn't started
-			* 1: Connected to the server
-			* 2: Server has received our request
-			* 3: Server Processing:
-			* 4: Request is finished and data is ready
-			*/
-			if(xmlhttp.readyState ==4 && xmlhttp.status==200)
-			{
-				x=xmlhttp.responseXML.documentElement.getElementsByTagName("CD");
-				$('ajaxData').innerHTML = "got data!";
-				console.log(x);
-				console.log('xml page loaded!');
-			}
-			else
-			{
-				$('ajaxData').innerHTML = "waiting...";
-			}
-		}
-		xmlhttp.open("GET", "http://localhost:8080/templates/Home/homeXMLData.xml", true);
-		xmlhttp.send();
-	}
-
-	$(document).ready(getScores());
-</script>
 {% endblock %}
 
 <!-- Block for changing any necessary page-styles -->
@@ -50,22 +17,6 @@
 <!--Block For Changing Page Content-->
 {% block content %}
 <div>
-	<p>loaded projectsTab.html</p>
-</div>
-<div id="contentBlocks">
-{% for featuredProject in pageData.featuredProjects %}
-	<div id="contentBlock">
-		<div id="contentBlockMainBody">
-			<div id="contentBlockTitle">
-				<p> {{ featuredProject.title }} </p>
-			</div>
-			<div id="contentBlockDescription">
-				<p> {{ featuredProject.description }} </p>
-			</div>
-			<div id="contentBlockImage">
-			</div>
-		</div>
-	</div>
-{% endfor %}
+	<p>loaded projectNotFound.html</p>
 </div>
 {% endblock %}

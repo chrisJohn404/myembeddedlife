@@ -30,8 +30,13 @@ class webApplication(object):
 			yaml.load(open(self.webSiteInfo['mainTabList'][4]['location'],'rb')),
 		}
 
+
 		#get initial data from yaml file
 		self.numMainTabs = len(self.webSiteInfo['mainTabList'])
+		self.validMainTabs = []
+		for i in range(0,5):
+			self.validMainTabs.append(self.webSiteInfo['mainTabList'][i]['title'])
+			self.validMainTabs.extend(self.webSiteInfo['mainTabList'][i]['altNames'])
 
 	def populateUserName(self, userString):
 		if(userString != None):
@@ -41,37 +46,80 @@ class webApplication(object):
 		return
 	def markTabAsActive(self, index):
 		self.webSiteInfo['mainTabList'][index]['selected']='true'
-	def getInitialData(self, data):
+
+	#pData contains the more local yaml file data that needs to be parsed for valid pages & sub-pages
+	#data contains the main yaml file.  Needed for loading the default html file if no specific one is found
+	def parsePageURLs(self,pathArray,pData,data):
+		
+		pageData = pData['pages']
+		numPages = len(pageData)
+		templateLocation = None
+		#Loop througgh pages data element & try to match the title with url
+		for page in pageData:
+			if(page['title'] == pathArray[2]):
+				pageData = page
+				#if page exists try & load its template
+				try:
+					templateLocation = page['template']
+				except KeyError:
+					templateLocation = data['defaultTemplate']
+				return pageData, templateLocation
+
+		#if page isn't found then return the notFoundTemplate
+		return pageData, data['notFoundTemplate']
+
+	#After first stage of path parsing, figure catch sub-page errors
+	def getInitialData(self, pathArray, data):
+		#Get Sub-Yaml files if they exist
 		pData = None
 		try:
 			lData = data['location']
+
+			#Currently only supports pre-loaded yaml files
 			pData = self.pageYamls[lData]
 		except KeyError:
 			pData = None
-		return pData,data['template']
-	def parseRequestString(self, pathArray):
-		if(len(pathArray) == 2):
-			reqStr = pathArray[1]
-			for i in range(0,self.numMainTabs):
-				pData = self.webSiteInfo['mainTabList'][i]
-				pTitle = pData['title']
-				if(reqStr == pTitle):
-					#print 'Found Match in title',reqStr, pTitle
-					self.markTabAsActive(i)
-					return self.getInitialData(pData)
-				else:
-					try:
-						aNames = pData['altNames']
-						for name in aNames:
-							if(reqStr == name):
-								#print 'Found Match in altNames',reqStr, name
-								self.markTabAsActive(i)
-								return self.getInitialData(pData)
-					except KeyError:
-						print 'KeyError on finding altNames'
+		#Return information if asking for a primary tab
+		if(len(pathArray) < 3):
+			return pData,data['template']
 		else:
-			print pathArray
-			return None,None
+			try:
+				if(pData != None):
+					#There is data to be parsed! call the next function
+					return self.parsePageURLs(pathArray,pData,data)
+				else:
+					return None,data['notFoundTemplate']
+			except KeyError:
+				#There has been an error in searching for a page
+				#or something............
+				return None,data['notFoundTemplate']
+		#can't do much, no template to return
+		return None,None
+
+	#Parses path for main tabs.  Recognizes capital cases as 'altNames'
+	def parseRequestString(self, pathArray):
+		reqStr = pathArray[1]
+		for i in range(0,self.numMainTabs):
+			pData = self.webSiteInfo['mainTabList'][i]
+			pTitle = pData['title']
+			if(reqStr == pTitle):
+				#print 'Found Match in title',reqStr, pTitle
+				self.markTabAsActive(i)
+				return self.getInitialData(pathArray, pData)
+			else:
+				try:
+					aNames = pData['altNames']
+					for name in aNames:
+						if(reqStr == name):
+							#print 'Found Match in altNames',reqStr, name
+							self.markTabAsActive(i)
+							return self.getInitialData(pathArray, pData)
+				except KeyError:
+					print 'KeyError on finding altNames'
+
+		#If tab is not found (should never get here) then return None's
+		#This case is hopefully covered by the app.yaml file
+		return None, None
 
 	def returnPageString(self, reqStr, userStr):
 

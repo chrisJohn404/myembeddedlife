@@ -35,7 +35,7 @@
 		})();
 	</script>
 
-	<link href="Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
+	<link href="/Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
 	{% block pageStyles %}
 	{% endblock %}
 </head>
@@ -57,11 +57,11 @@
 				<div class="tabObj">
 				{% if mainTab.selected is string %}
 					<div class="selected minor list">
-						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+						<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
 					</div>
 				{% else %}
 					<div class="minor list">
-						<a href={{ mainTab.title }}>{{ mainTab.title }}</a>
+						<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
 					</div>
 				{% endif %}
 				</div>
@@ -101,7 +101,9 @@
 				<div id="subPageContentBlock">
 					<!-- Place this tag where you want the search results to render -->
 					<div id="googleResultsBlock">
-						<gcse:searchresults></gcse:searchresults>
+						<div id="googleResultsBlockBody">
+							<gcse:searchresults></gcse:searchresults>
+						</div>
 					</div>
 					<div id="pageContentBlock">
 						<div id="pageShiftLeft">

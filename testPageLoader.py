@@ -19,18 +19,24 @@ def getHomePageTest():
 		'/',
 		'/Home',
 		'/Tutorials',
-		'/Tutorials/Not A Page',
 		'/tutorials',
+		'/Tutorials/Not A Page',
+		'/Tutorials/MyTutorial1',
 		'/Projects',
 		'/projects',
+		'/Projects/Not A Page',
+		'/Projects/PJ1',
+		'/Projects/PJ2',
 		'/BookShelf',
 		'/bookShelf',
 		'/bookshelf',
 		'/Bookshelf',
+		'/BookShelf/Not A Page',
 		'/AboutMe',
 		'/aboutMe',
 		'/aboutme',
 		'/Aboutme',
+		'/AboutMe/Not A Page',
 	]
 
 	resultStrings = [
@@ -38,29 +44,43 @@ def getHomePageTest():
 		'Home/home.html',
 		'Tutorials/tutorialsTab.html',
 		'Tutorials/tutorialsTab.html',
-		'Tutorials/tutorialsTab.html',
+		'Tutorials/tutorialNotFound.html',
+		'Tutorials/tutorialsTabDefault.html',
 		'Projects/projectsTab.html',
 		'Projects/projectsTab.html',
+		'Projects/projectNotFound.html',
+		'Projects/PJ1/PJ1.html',
+		'Projects/projectsTabDefault.html',
 		'Bookshelf/bookshelfTab.html',
 		'Bookshelf/bookshelfTab.html',
 		'Bookshelf/bookshelfTab.html',
 		'Bookshelf/bookshelfTab.html',
+		'Bookshelf/bookNotFound.html',
 		'AboutMe/aboutMeTab.html',
 		'AboutMe/aboutMeTab.html',
 		'AboutMe/aboutMeTab.html',
 		'AboutMe/aboutMeTab.html',
+		'AboutMe/attributeNotFound.html',
 	]
 	if(len(testStrings) != len(resultStrings)):
 		print "bad test-cases"
+		print "Num Tests",len(testStrings)
+		print "Num Results",len(resultStrings)
 		return True
-
+	testError = False
 	for i in range(0,len(testStrings)):
 		template_values, pageStr = page.returnPageString(testStrings[i], 'chris')
 		if(pageStr != resultStrings[i]):
 			print "Failed URL test case: " + testStrings[i]
-			#print 'Returned Pages: ',pageStr
-			return True
-		print 'Request',testStrings[i]
-		if((testStrings[i] == '/Projects')):
-			print template_values['pageData']
-	return False
+			print 'Returned Pages: ',pageStr
+			print ''
+			
+			testError = True
+		#print 'Request',testStrings[i]
+		#if((testStrings[i] == '/Projects/PJ1')):
+		#	print template_values['pageData']
+		#	print 'Returned Page: ',pageStr
+
+	return testError
+
+
