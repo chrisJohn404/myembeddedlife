@@ -1,7 +1,8 @@
 {% extends "master.html" %}
 
 <!--Block For Changing Page Header-->
-{% block head %}
+{% block pageTitle %}
+<h1>{{ pageData.title }}</h1>
 {% endblock %}
 
 <!-- Block for changing any necessary page-styles -->
@@ -11,12 +12,25 @@
 
 
 {% block coolnessBlock %}
-<h1> Wahoo! </h1>
 {% endblock %}
 
 <!--Block For Changing Page Content-->
 {% block content %}
 <div>
-	<p>loaded Tutorials Tab Default.html</p>
+	<p>{{ pageData.description }}</p>
 </div>
+<br>
+<div id="TemplatePageData">
+	{{ pageData.data }}
+</div>
+<!--<div id="TemplateCodeBlock">
+	<div class="markup">
+		<pre class="prettyprint">
+			{% for line in pageData.code %}
+				<p>{{ line }}</p>
+			{% endfor %}
+		</pre>
+	</div>
+</div>-->
+
 {% endblock %}

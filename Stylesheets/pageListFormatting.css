@@ -1,0 +1,36 @@
+.pageListItem {
+	position:relative;
+	top:0px;
+	left:0px;
+}
+.pageListItem .leftSide {
+	position:relative;
+	top:0px;
+	left:0px;
+}
+.pageListItem .leftSideBlock {
+	position:relative;
+}
+.pageListItem .rightSide {
+	position:absolute;
+	top:0px;
+	left:200px;
+}
+.pageListItem .rightSideBlock {
+	position:relative;
+}
+#pageContentBlock {
+	margin:0px 0px 0px 0px;
+}
+#pageContentBlock #contentBlock {
+	position:relative;
+	min-height:100px;
+	padding:5px 0px 5px 0px;
+	/*background-color:#FFF2D7;*/
+	transition: all 0.2s;
+
+}
+#pageContentBlock #contentBlock:hover {
+	/*background-color:#FFDE96;*/
+	background-color:#FFF6E4;
+}

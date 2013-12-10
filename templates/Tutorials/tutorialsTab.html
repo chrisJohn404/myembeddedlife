@@ -1,68 +1,42 @@
 {% extends "master.html" %}
 
 <!--Block For Changing Page Header-->
-{% block head %}
-<script language="javascript" type="text/javascript">
-	xmlhttp = new XMLHttpRequest();
-
-	function getScores()
-	{
-		xmlhttp.onreadystatechange = 
-		function()
-		{
-			/* xml status numbers
-			* 0: Hasn't started
-			* 1: Connected to the server
-			* 2: Server has received our request
-			* 3: Server Processing:
-			* 4: Request is finished and data is ready
-			*/
-			if(xmlhttp.readyState ==4 && xmlhttp.status==200)
-			{
-				x=xmlhttp.responseXML.documentElement.getElementsByTagName("CD");
-				$('ajaxData').innerHTML = "got data!";
-				console.log(x);
-				console.log('xml page loaded!');
-			}
-			else
-			{
-				$('ajaxData').innerHTML = "waiting...";
-			}
-		}
-		xmlhttp.open("GET", "http://localhost:8080/templates/Home/homeXMLData.xml", true);
-		xmlhttp.send();
-	}
-
-	$(document).ready(getScores());
-</script>
+{% block pageTitle %}
 {% endblock %}
 
 <!-- Block for changing any necessary page-styles -->
 {% block pageStyles %}
-<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />
+<link href="Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
 {% block coolnessBlock %}
-<h1> Wahoo! </h1>
 {% endblock %}
 
 <!--Block For Changing Page Content-->
 {% block content %}
-<div>
-	<p>loaded tutorialsTab.html</p>
-</div>
-<div id="contentBlocks">
+<div id="pageContentBlock">
 {% for page in pageData.pages %}
 	<div id="contentBlock">
-		<div id="contentBlockMainBody">
-			<div id="contentBlockTitle">
-				<p> {{ page.title }} </p>
+		<div id="searchBarBlock" class="pageListItem">
+			<div class="leftSide">
+				<div class="leftSideBlock">
+					<div id="contentBlockImage">
+						<a href="/Tutorials/{{ page.title }}">
+							<img src="{{ page.smallImage }}"></img>
+						</a>
+					</div>
+				</div>
 			</div>
-			<div id="contentBlockDescription">
-				<p> {{ page.description }} </p>
-			</div>
-			<div id="contentBlockImage">
+			<div class="rightSide">
+				<div class="rightSideBlock">
+					<div id="contentBlockTitle">
+						<p> <a href="/Tutorials/{{ page.title }}">{{ page.title }}</a></p>
+					</div>
+					<div id="contentBlockDescription">
+						<p> {{ page.shortDescription }} </p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

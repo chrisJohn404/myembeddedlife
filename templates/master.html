@@ -28,6 +28,9 @@
 	<link href="/Stylesheets/textFormatting.css" rel="stylesheet" type="text/css" />
 	<link href="/Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
 
+	<!--Script for pretty-print -->
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
 	<!--<script>
 		(function() {
 			var cx = '004185851077072532640:ucst63as0kc';
@@ -94,11 +97,18 @@
 			</div>
 		</div>
 		<div id="PageBodyHeader" class="bodyElement">
-			<!--<div id="searchBarHeaderBlock">
+			<!-- Place this tag where you want the search results to render -->
+			<div id="googleResultsBlock">
+				<div id="googleResultsBlockBody" style="display:none;">
+					<gcse:searchresults></gcse:searchresults>
+				</div>
+			</div>
+
+			<div id="searchBarHeaderBlock">
 				<div id="searchBarBlock" class="splitHead">
 					<div class="leftSide">
 						<div class="leftSideBlock">
-							{% block head %}
+							{% block pageTitle %}
 							<h1>{{ activePage }}</h1>
 							{% endblock %}
 						</div>
@@ -107,12 +117,6 @@
 						<div class="rightSideBlock">
 						</div>
 					</div>
-				</div>
-			</div>-->
-			<!-- Place this tag where you want the search results to render -->
-			<div id="googleResultsBlock">
-				<div id="googleResultsBlockBody" style="display:none;">
-					<gcse:searchresults></gcse:searchresults>
 				</div>
 			</div>
 		</div>
@@ -123,7 +127,23 @@
 			{% endblock %}	
 		</div>
 		<div id="PageFooter" class="bodyElement">
-			<p>Footer</p>
+			<div class="socialMediaButtons">
+				<!--Social Media buttons are from www.addthis.com-->
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style ">
+					<a class="addthis_button_gmail addthis_button_preferred_1"></a>
+					<a class="addthis_button_facebook addthis_button_preferred_2"></a>
+					<a class="addthis_button_twitter addthis_button_preferred_3"></a>
+					<a class="addthis_button_linkedin addthis_button_preferred_4"></a>
+					<a class="addthis_button_google_plusone_share addthis_button_preferred_5"></a>
+					<a class="addthis_button_print addthis_button_preferred_6"></a>
+					<a class="addthis_button_compact"></a>
+				<!--<a class="addthis_counter addthis_bubble_style"></a>-->
+				</div>
+				<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52a6c5194eb171cc"></script>
+				<!-- AddThis Button END -->
+			</div>			
 		</div>
 	</div>
 </body>

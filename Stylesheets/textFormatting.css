@@ -6,3 +6,11 @@
 #mainPage h1 {
 	margin:0px;
 }
+#mainPage ul {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+#mainPage ol {
+	margin-top:0px;
+	margin-bottom:0px;
+}
