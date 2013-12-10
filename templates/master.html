@@ -22,7 +22,13 @@
 
 	<!-- script to enable the google-search cse feature -->
 	<!-- Put the following javascript before the closing </head> tag. -->
-	<script>
+	<script src="/Scripts/googleCSE.js"></script>
+
+	<link href="/Stylesheets/pageFormatting.css" rel="stylesheet" type="text/css" />
+	<link href="/Stylesheets/textFormatting.css" rel="stylesheet" type="text/css" />
+	<link href="/Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
+
+	<!--<script>
 		(function() {
 			var cx = '004185851077072532640:ucst63as0kc';
 			var gcse = document.createElement('script');
@@ -33,88 +39,91 @@
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(gcse, s);
 		})();
-	</script>
-
-	<link href="/Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
+	</script>-->
 	{% block pageStyles %}
 	{% endblock %}
 </head>
 
 <body id="mainPage">
-	<div id="pageHeader">
-		<div id="header">
-			<div class="major component">
-				<div class="left"> 
-					<h1>My Embedded Life</h1>
-				</div>
-				<div class="right"> 
-					<h1>By Chris Johnson</h1>
-					<p class="userName">{{ currentUserName }}</p>
-				</div>
-			</div>
-			<div class="tabList">
-				{% for mainTab in mainTabList %}
-				<div class="tabObj">
-				{% if mainTab.selected is string %}
-					<div class="selected minor list">
-						<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
+	<div id="PageContainer">
+		<div id="PageHeader" class="bodyElement">
+			<div class="splitHead headerBlock">
+				<div class="leftSide">
+					<div class="leftSideBlock">
+						<h1>MyEmbeddedLife</h1>
 					</div>
-				{% else %}
-					<div class="minor list">
-						<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
-					</div>
-				{% endif %}
 				</div>
-				{% endfor %}
-				{% block head %}
-				<h1>My Web Page!!</h1>
-				{% endblock %}
+				<div class="rightSide">
+					<div class="rightSideBlock">
+						<h1>By Chris Johnson</h1> 
+						<p class="userName">{{ currentUserName }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div id="pageBody">
-		<div id="pageSideBar" class="bodyBlock">
-			<div id="pagecontentList">
-				<ul>
-					{% for mainTab in mainTabList %}
-					<li>{{ mainTab.title }}</li>
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-		<div id="mainPageBlockHolder" class="bodyBlock">
-			<div id="searchBarHeaderBlock">
-				<div id="searchBarBlock">
-					{% block contentBlockPreHeader %}
-					<div class="header webPageCurrentPosition">
-						<h1>{{ activePage }}</h1>
-					</div>
-					<div class="header webPageSearchBar">
-						<div id="googleCSEDiv">
-							<gcse:searchbox></gcse:searchbox>
+		<div id="PageTabs">
+			<div class="splitHead">
+				<div class="tabList">
+					<div class="leftSide">
+						<div class="leftSideBlock">
+							{% for mainTab in mainTabList %}
+							{% if mainTab.selected is string %}
+								<div class="tabObj">
+									<div class="minor list selTab">
+										<a class="selected" href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
+									</div>
+								</div>
+							{% else %}
+								<div class="tabObj">
+									<div class="minor list listTab">
+										<a class="listed" href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
 						</div>
 					</div>
-					{% endblock %}
+					<div class="rightSide">
+						<div class="rightSideBlock">
+							<div id="googleCSEDiv">
+								<gcse:searchbox></gcse:searchbox>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="mainPageBlock">
-				<div id="subPageContentBlock">
-					<!-- Place this tag where you want the search results to render -->
-					<div id="googleResultsBlock">
-						<div id="googleResultsBlockBody">
-							<gcse:searchresults></gcse:searchresults>
-						</div>
-					</div>
-					<div id="pageContentBlock">
-						<div id="pageShiftLeft">
-							{% block coolnessBlock %}
+		</div>
+		<div id="PageBodyHeader" class="bodyElement">
+			<!--<div id="searchBarHeaderBlock">
+				<div id="searchBarBlock" class="splitHead">
+					<div class="leftSide">
+						<div class="leftSideBlock">
+							{% block head %}
+							<h1>{{ activePage }}</h1>
 							{% endblock %}
-							{% block content %}
-							{% endblock %}		
 						</div>
-					</div>			
+					</div>
+					<div class="rightSide">
+						<div class="rightSideBlock">
+						</div>
+					</div>
+				</div>
+			</div>-->
+			<!-- Place this tag where you want the search results to render -->
+			<div id="googleResultsBlock">
+				<div id="googleResultsBlockBody" style="display:none;">
+					<gcse:searchresults></gcse:searchresults>
 				</div>
 			</div>
+		</div>
+		<div id="PageBody" class="bodyElement">
+			{% block coolnessBlock %}
+			{% endblock %}
+			{% block content %}
+			{% endblock %}	
+		</div>
+		<div id="PageFooter" class="bodyElement">
+			<p>Footer</p>
 		</div>
 	</div>
 </body>

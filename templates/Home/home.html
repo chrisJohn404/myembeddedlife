@@ -2,39 +2,6 @@
 
 <!--Block For Changing Page Header-->
 {% block head %}
-<script language="javascript" type="text/javascript">
-	xmlhttp = new XMLHttpRequest();
-
-	function getScores()
-	{
-		xmlhttp.onreadystatechange = 
-		function()
-		{
-			/* xml status numbers
-			* 0: Hasn't started
-			* 1: Connected to the server
-			* 2: Server has received our request
-			* 3: Server Processing:
-			* 4: Request is finished and data is ready
-			*/
-			if(xmlhttp.readyState ==4 && xmlhttp.status==200)
-			{
-				x=xmlhttp.responseXML.documentElement.getElementsByTagName("CD");
-				$('ajaxData').innerHTML = "got data!";
-				console.log(x);
-				console.log('xml page loaded!');
-			}
-			else
-			{
-				$('ajaxData').innerHTML = "waiting...";
-			}
-		}
-		xmlhttp.open("GET", "http://localhost:8080/templates/Home/homeXMLData.xml", true);
-		xmlhttp.send();
-	}
-
-	$(document).ready(getScores());
-</script>
 {% endblock %}
 
 <!-- Block for changing any necessary page-styles -->
@@ -44,7 +11,6 @@
 
 
 {% block coolnessBlock %}
-<h1> Wahoo! </h1>
 {% endblock %}
 
 <!--Block For Changing Page Content-->
@@ -91,7 +57,6 @@
 	</script>
 </div>
 <div id="graphsDiv">
-<!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AiK693uwE66idDhUTUN1Q1ZSZ0VBVnE2Tk9yckRrelE&transpose=0&headers=1&range=J4%3AN16&gid=1&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Peak-To-Peak Resolution","minValue":8,"viewWindowMode":"explicit","logScale":false,"viewWindow":{"min":8,"max":20},"maxValue":20},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","curveType":"","title":"Resolution Index vs Peak-To-Peak Resolution","animation":{"duration":0},"legend":"right","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"Resolution Index","useFormatFromData":true,"minValue":1,"viewWindowMode":"explicit","viewWindow":{"min":1,"max":12},"maxValue":12},"width":800,"height":300},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script>-->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AiK693uwE66idDhUTUN1Q1ZSZ0VBVnE2Tk9yckRrelE&transpose=0&headers=1&range=J4%3AN16&gid=1&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"curveType":"","animation":{"duration":500},"width":450,"lineWidth":2,"hAxis":{"title":"Resolution Index","useFormatFromData":true,"minValue":1,"viewWindowMode":"explicit","gridlines":{"count":"12"},"viewWindow":{"min":1,"max":12},"maxValue":12},"chartArea":{"height":"68.51%","width":"68.258%","left":"9.973%","top":"10.737%"},"vAxes":[{"useFormatFromData":true,"title":"Peak-To-Peak Resolution (bits)","minorGridlines":{"count":"0"},"minValue":8,"viewWindowMode":"explicit","gridlines":{"count":"10"},"logScale":false,"viewWindow":{"min":10,"max":25},"maxValue":20},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"title":"Res. Index vs Pk-To-Pk Res.","booleanRole":"certainty","height":250,"legend":"right","useFirstColumnAsDomain":true,"tooltip":{}},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AiK693uwE66idDhUTUN1Q1ZSZ0VBVnE2Tk9yckRrelE&transpose=0&headers=1&range=J19%3AN31&gid=1&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"curveType":"","animation":{"duration":500},"width":450,"lineWidth":2,"hAxis":{"title":"Resolution Index","useFormatFromData":true,"minValue":1,"viewWindowMode":"explicit","gridlines":{"count":"12"},"viewWindow":{"min":1,"max":12},"maxValue":12},"chartArea":{"height":"68.51%","width":"68.258%","left":"9.973%","top":"10.737%"},"vAxes":[{"useFormatFromData":true,"title":"Effective Resolution (µV)","minorGridlines":{"count":"0"},"minValue":0,"viewWindowMode":"explicit","gridlines":{"count":"10"},"logScale":false,"viewWindow":{"min":0,"max":300},"maxValue":300},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"title":"Res. Index vs Effective Res.","booleanRole":"certainty","height":250,"legend":"right","useFirstColumnAsDomain":true,"tooltip":{}},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script>
 </div>

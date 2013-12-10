@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<!-- Web-site Includes -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/icon-shadow.png">
+	<!-- Webapp Includes -->
+	<!--<link href="stylesheet.css" rel="stylesheet" type="text/css" />-->
+	
+	{% block title %}
+	<title>{{ pageTitle }}</title>
+	{% endblock %}
+	<meta property="og:site_name" content="Tutorialzine">
+	<!--<meta name="keywords" content="tutorialzine, tutorial zine, tzine, tutorials, freebies, resources, web development, webdev, demo, PHP, MySQL, jQuery, CSS, XHTML, jQuery UI, CSS3, HTML5, HTML, web design, webdesign">-->
+	<meta property="og:title" content="Tutorials, Resources, Projects">
+	<meta property="og:url" content="myembeddedlife.appspot.com">
+	<meta property="og:image" content="myembeddedlife.appspot.com/icon-shadow.png">
+	<meta property="og:type" content="website">
+
+	<!-- script to enable the google-search cse feature -->
+	<!-- Put the following javascript before the closing </head> tag. -->
+	<script>
+		(function() {
+			var cx = '004185851077072532640:ucst63as0kc';
+			var gcse = document.createElement('script');
+			gcse.type = 'text/javascript';
+			gcse.async = true;
+			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+			'//www.google.com/cse/cse.js?cx=' + cx;
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(gcse, s);
+		})();
+	</script>
+
+	<link href="/Stylesheets/main_style.css" rel="stylesheet" type="text/css" />
+	{% block pageStyles %}
+	{% endblock %}
+</head>
+
+<body id="mainPage">
+	<div id="pageHeader">
+		<div id="header">
+			<div class="major component">
+				<div class="left"> 
+					<h1>My Embedded Life</h1>
+				</div>
+				<div class="right"> 
+					<h1>By Chris Johnson</h1> 
+					<p class="userName">{{ currentUserName }}</p>
+				</div>
+			</div>
+			<div class="tabList">
+				{% for mainTab in mainTabList %}
+					<div class="tabObj">
+					{% if mainTab.selected is string %}
+						<div class="selected minor list">
+							<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
+						</div>
+					{% else %}
+						<div class="minor list">
+							<a href=/{{ mainTab.title }}>{{ mainTab.title }}</a>
+						</div>
+					{% endif %}
+					</div>
+				{% endfor %}
+				{% block head %}
+				<h1>My Web Page!!</h1>
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+	<div id="pageBody">
+		<div id="pageSideBar" class="bodyBlock">
+			<div id="pagecontentList">
+				<ul>
+					{% for mainTab in mainTabList %}
+					<li>{{ mainTab.title }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div id="mainPageBlockHolder" class="bodyBlock">
+			<div id="searchBarHeaderBlock">
+				<div id="searchBarBlock">
+					{% block contentBlockPreHeader %}
+					<div class="header webPageCurrentPosition">
+						<h1>{{ activePage }}</h1>
+					</div>
+					<div class="header webPageSearchBar">
+						<div id="googleCSEDiv">
+							<gcse:searchbox></gcse:searchbox>
+						</div>
+					</div>
+					{% endblock %}
+				</div>
+			</div>
+			<div id="mainPageBlock">
+				<div id="subPageContentBlock">
+					<!-- Place this tag where you want the search results to render -->
+					<div id="googleResultsBlock">
+						<div id="googleResultsBlockBody">
+							<gcse:searchresults></gcse:searchresults>
+						</div>
+					</div>
+					<div id="pageContentBlock">
+						<div id="pageShiftLeft">
+							{% block coolnessBlock %}
+							{% endblock %}
+							{% block content %}
+							{% endblock %}		
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+

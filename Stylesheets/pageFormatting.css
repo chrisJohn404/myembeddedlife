@@ -1,0 +1,140 @@
+/* Main Page Div-styling.  Main layout of the page */
+
+#mainPage {
+	background-color: #F5F5F5;
+	margin: 0;
+	background: url('/Images/siteBackground.png');
+	min-width:980px;
+}
+#PageContainer {
+	background-color: #F5F5F5;
+	position:relative;
+	top:0px;
+	bottom:5px;
+	height:100%;
+	width:980px;
+	box-shadow: 1px 1px 50px black;
+	/*border: solid 1px black;*/
+	margin: 0 auto;
+	margin-bottom:10px;
+}
+.bodyElement {
+	margin:0px;
+	padding:0px 2px 0px 2px;
+	border:0px;
+	position:relative;
+}
+.headerBlock {
+	height:60px;
+}
+.splitHead {
+	position:relative;
+	top:0px;
+	left:0px;
+}
+.leftSide {
+	position:relative;
+	top:0px;
+	left:0px;
+}
+.leftSideBlock {
+	position:relative;
+}
+.rightSide {
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+.rightSideBlock {
+	position:relative;
+}
+
+/* Page header/Secondary tab block */
+#PageHeader {
+	background-color:#38B2CE;
+}
+
+/* Tab layout organization */
+#PageTabs {
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 50px;
+	background-color: #E6E6E6;
+}
+#PageTabs .tabObj {
+	position:relative;
+	top:0px;
+	float:left;
+	margin: 2px 2px 0px 0px;
+}
+#PageTabs .tabObj .selTab a:hover {
+	/*background-color: rgb(255, 222, 150);*/
+	color:#FF9F40;
+}
+#PageTabs .tabObj .listTab a:hover {
+	/*background-color: rgb(3, 64, 106);
+	color: rgb(101, 165, 209);
+	background-color:#17328B;
+	color:#4869D5;*/
+	background-color: rgb(166, 121, 21);
+	color: rgb(255, 222, 150);
+}
+#PageTabs .selected{
+	/*background-color: rgb(3, 64, 106);
+	color: rgb(101, 165, 209);
+	background-color:#17328B;
+	color:#4869D5;*/
+	background-color: rgb(166, 121, 21);
+	color: rgb(255, 222, 150);
+}
+#PageTabs .listed{
+	/*background-color:rgb(101, 165, 209);
+	color:rgb(3,64,106);
+	background-color:#4869D5;
+	color:#17328B;*/
+	background-color: rgb(255, 222, 150);
+	color: rgb(166, 121, 21);
+}
+#PageTabs .list {
+	position:relative;
+	top:0px;
+}
+#PageTabs .list a {
+	display:block;
+	/*width:80px;*/
+	top:0px;
+	text-decoration: blink;
+	padding: 12px 12px 12px 12px;
+	transition: all 0.2s;
+}
+
+/* PageBodyHeader block */
+#PageBodyHeader {
+	background-color: #E6E6E6;
+}
+#googleCSEDiv {
+	width:500px;
+	margin-right:5px;
+}
+.gsc-control-cse {
+	margin:0px;
+	padding:0px;
+}
+.gsc-control-cse-en {
+	margin:0px;
+	padding:0px;
+}
+
+/* Page Body block */
+#PageBody {
+	/*background-color:rgb(40, 152, 179);*/
+	/*border-top-style: groove;
+	border-top-width: thin;*/
+}
+
+/* Page Footer block */
+#PageFooter {
+	background-color:#38B2CE;
+}
