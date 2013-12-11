@@ -1,6 +1,6 @@
 pages:
-  - 'myEmbeddedLife':
-    title: 'myEmbeddedLife'
+  - 'MyEmbeddedLife':
+    title: 'MyEmbeddedLife'
     description: |
         The website you are currently browsing!
     template: 'Projects/PJ1/PJ1.html'
@@ -8,16 +8,25 @@ pages:
       - 'sub1':
         title: 'sub1'
         template: 'Projects/PJ1/sub1.html'
-      - 'sub2'
-  - 'PJ2':
-    title: 'PJ2'
+      - 'sub2':
+        title: 'sub2'
+        template: 'Projects/PJ1/sub2.html'
+  - 'S.T.A.B.L.E.':
+    title: 'S.T.A.B.L.E.'
     description: |
-        This project2 is super cool!
+        This is my senior year capstone project to get my batchlors degree in Electrical <br>
+        and Computer Engineering while attending University of Colorado at Boulder.
     subPages:
       - 'p1'
       - 'p2'
-  - 'PJ3':
-    title: 'PJ3'
+  - 'Simon-Says':
+    title: 'Simon-Says'
+    description: |
+        This is the project I completed while taking CU's Real Time Embedded course, (Course#).<br>
+        We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
+        on a computer running a copy of Wind River's VxWorks RTOS.
+  - 'Junior-Project':
+    title: 'Junior-Project'
     description: |
         Booga-wooga doo!!
     subPages:

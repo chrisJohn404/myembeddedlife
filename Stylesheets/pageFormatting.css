@@ -136,6 +136,7 @@
 
 /* Page Body block */
 #PageBody {
+	margin: 20px 5px 20px 5px;
 	/*background-color:rgb(40, 152, 179);*/
 	/*border-top-style: groove;
 	border-top-width: thin;*/

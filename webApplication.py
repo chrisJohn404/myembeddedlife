@@ -5,6 +5,7 @@ import yaml
 #from google.appengine.api import users
 import logging
 import re
+from webAppLogger import log
 
 
 class webApplication(object):
@@ -14,9 +15,11 @@ class webApplication(object):
 
 		if(configDict == None):
 			self.webSiteInfo = yaml.load(open('index.yaml', 'rb'))
+			log('loading index.yaml file')
 		else:
 			self.webSiteInfo = configDict
 			self.preLoadedDict = True
+			log('using pre-loaded index.yaml file')
 
 		#Load a selected amount of other yaml files
 		self.pageYamls = {
@@ -46,17 +49,12 @@ class webApplication(object):
 		return
 	def markTabAsActive(self, index):
 		self.webSiteInfo['mainTabList'][index]['selected']='true'
-
-	#pData contains the more local yaml file data that needs to be parsed for valid pages & sub-pages
-	#data contains the main yaml file.  Needed for loading the default html file if no specific one is found
-	def parsePageURLs(self,pathArray,pData,data):
-		
-		pageData = pData['pages']
+	def parseSubPageURLs(self,pathArray,pData,data):
+		pageData = pData['subPages']
 		numPages = len(pageData)
 		templateLocation = None
-		#Loop througgh pages data element & try to match the title with url
 		for page in pageData:
-			if(page['title'] == pathArray[2]):
+			if(page['title'] == pathArray[3]):
 				pageData = page
 				#if page exists try & load its template
 				try:
@@ -64,9 +62,33 @@ class webApplication(object):
 				except KeyError:
 					templateLocation = data['defaultTemplate']
 				return pageData, templateLocation
-
-		#if page isn't found then return the notFoundTemplate
-		return pageData, data['notFoundTemplate']
+		return pData, data['notFoundTemplate']
+	#pData contains the more local yaml file data that needs to be parsed for valid pages & sub-pages
+	#data contains the main yaml file.  Needed for loading the default html file if no specific one is found
+	def parsePageURLs(self,pathArray,pData,data):
+		if(len(pathArray) >= 3):
+			pageData = pData['pages']
+			numPages = len(pageData)
+			templateLocation = None
+			#Loop througgh pages data element & try to match the title with url
+			for page in pageData:
+				if(page['title'] == pathArray[2]):
+					pageData = page
+					#if page exists try & load its template
+					try:
+						templateLocation = page['template']
+					except KeyError:
+						templateLocation = data['defaultTemplate']
+					if(len(pathArray) == 3):
+						return pageData, templateLocation
+					else:
+						log('path>3')
+						return self.parseSubPageURLs(pathArray,pageData,data)
+			#if page isn't found then return the notFoundTemplate
+			return pageData, data['notFoundTemplate']
+		else:
+			log('path<2')
+			return pageData, data['notFoundTemplate']
 
 	#After first stage of path parsing, figure catch sub-page errors
 	def getInitialData(self, pathArray, data):
@@ -142,10 +164,10 @@ class webApplication(object):
 			self.webSiteInfo['pageTitle'] = pathArray[1]
 
 			#update the active-page sub-header
-			if(self.preLoadedDict != True):
-				self.webSiteInfo['activePage'] = "pre-loaded dict"
-			else:
-				self.webSiteInfo['activePage'] = reqStr
+			#if(self.preLoadedDict != True):
+			#	self.webSiteInfo['activePage'] = "pre-loaded dict"
+			#else:
+			#	self.webSiteInfo['activePage'] = reqStr
 
 
 			#switch between main path's before starting to dig deaper into the .yaml mess

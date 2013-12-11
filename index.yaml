@@ -37,6 +37,8 @@ mainDict:
       notFoundTemplate: 'Tutorials/tutorialNotFound.html'
       defaultTemplate: 'Tutorials/tutorialsTabDefault.html'
       location: 'templates/Tutorials/tutorialsList.yaml'
+      subTabs:
+        - 'css/html/js'
       altNames:
         - 'tutorials'
       description: |
