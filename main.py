@@ -29,7 +29,8 @@ configFile = yaml.load(open(os.path.dirname(__file__)+'/index.yaml', 'rb'))
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-    	
+    	#gets the main dictionary element in the index.yaml file
+    	#configFile gets passed into the webapp2.WSGIApplication function call
 		self.mainPageDict = self.app.config.get('mainDict')
 		#log(self.mainPageDict)
 		
