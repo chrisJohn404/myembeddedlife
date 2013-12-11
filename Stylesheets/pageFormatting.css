@@ -16,6 +16,7 @@
 	box-shadow: 1px 1px 50px black;
 	/*border: solid 1px black;*/
 	margin: 0 auto;
+	margin-top:10px;
 	margin-bottom:50px;
 }
 .bodyElement {
@@ -26,6 +27,7 @@
 }
 .headerBlock {
 	height:60px;
+	padding:5px;
 }
 .splitHead {
 	position:relative;
@@ -44,6 +46,11 @@
 	position:absolute;
 	top:0px;
 	right:0px;
+}
+#PageHeader .splitHead .rightSide {
+	position:absolute;
+	top:5px;
+	right:5px;
 }
 .splitHead .rightSideBlock {
 	position:relative;
