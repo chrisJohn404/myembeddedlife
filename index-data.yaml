@@ -16,17 +16,11 @@ mainDict:
           Welcome to my website!
       featuredPages:
         - 'featured1':
-          type: 'Tutorial'
-          title: 'Tutorial1'
-          contentFile:
-          description: |
-              This is my first featured page!
+          type: 'Tutorials'
+          title: 'Google-Graphs'
         - 'featured2':
-          type: 'Project'
-          title: 'Project1'
-          contentFile:
-          description: |
-              This is my second featured page!
+          type: 'Projects'
+          title: 'MyEmbeddedLife'
 
   #Information to be displayed under the instructables tab
     - 'Tutorials':

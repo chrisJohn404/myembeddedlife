@@ -6,7 +6,7 @@
 
 <!-- Block for changing any necessary page-styles -->
 {% block pageStyles %}
-<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />
+<link href="Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
@@ -15,17 +15,28 @@
 
 <!--Block For Changing Page Content-->
 {% block content %}
-<div id="contentBlocks">
+<div id="pageContentBlock">
 {% for page in pageData.pages %}
 	<div id="contentBlock">
-		<div id="contentBlockMainBody">
-			<div id="contentBlockTitle">
-				<p> <a href="/Projects/{{ page.title }}">{{ page.title }}</a></p>
+		<div id="searchBarBlock" class="pageListItem">
+			<div class="leftSide">
+				<div class="leftSideBlock">
+					<div id="contentBlockImage">
+						<a href="/Projects/{{ page.title }}">
+							<img src="{{ page.smallImage }}"></img>
+						</a>
+					</div>
+				</div>
 			</div>
-			<div id="contentBlockDescription">
-				<p> {{ page.description }} </p>
-			</div>
-			<div id="contentBlockImage">
+			<div class="rightSide">
+				<div class="rightSideBlock">
+					<div id="contentBlockTitle">
+						<p> <a href="/Projects/{{ page.title }}">{{ page.title }}</a></p>
+					</div>
+					<div id="contentBlockDescription">
+						<p> {{ page.shortDescription }} </p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

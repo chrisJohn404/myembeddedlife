@@ -4,7 +4,7 @@
 import yaml
 from webApplication import webApplication
 
-mainDict = yaml.load(open('index.yaml','rb'))['mainDict']
+mainDict = yaml.load(open('index-data.yaml','rb'))['mainDict']
 
 '''
 Unit test for testing whether or not the right .html file is being loaded.
@@ -17,7 +17,8 @@ def getHomePageTest():
 	
 	testStrings = [
 		'/',
-		'/Home',
+		#'/Home',
+		#'/home',
 		'/Tutorials',
 		'/tutorials',
 		'/Tutorials/Not A Page',
@@ -26,8 +27,8 @@ def getHomePageTest():
 		'/Projects',
 		'/projects',
 		'/Projects/Not A Page',
-		'/Projects/myEmbeddedLife/bl',
-		'/Projects/myEmbeddedLife',
+		'/Projects/MyEmbeddedLife/bl',
+		'/Projects/MyEmbeddedLife',
 		'/Projects/PJ2',
 		'/BookShelf',
 		'/bookShelf',
@@ -43,7 +44,8 @@ def getHomePageTest():
 
 	resultStrings = [
 		'Home/home.html',
-		'Home/home.html',
+		#'Home/home.html',
+		#'Home/home.html',
 		'Tutorials/tutorialsTab.html',
 		'Tutorials/tutorialsTab.html',
 		'Tutorials/tutorialNotFound.html',
@@ -54,7 +56,7 @@ def getHomePageTest():
 		'Projects/projectNotFound.html',
 		'Projects/projectNotFound.html',
 		'Projects/PJ1/PJ1.html',
-		'Projects/projectsTabDefault.html',
+		'Projects/projectNotFound.html',
 		'Bookshelf/bookshelfTab.html',
 		'Bookshelf/bookshelfTab.html',
 		'Bookshelf/bookshelfTab.html',
@@ -71,6 +73,9 @@ def getHomePageTest():
 		print "Num Tests",len(testStrings)
 		print "Num Results",len(resultStrings)
 		return True
+	#else:
+	#	for i in range(0,len(resultStrings)):
+	#		print testStrings[i] + ' -> ' + resultStrings[i]
 	testError = False
 	for i in range(0,len(testStrings)):
 		template_values, pageStr = page.returnPageString(testStrings[i], 'chris')

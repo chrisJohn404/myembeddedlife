@@ -1,6 +1,9 @@
 pages:
   - 'MyEmbeddedLife':
     title: 'MyEmbeddedLife'
+    smallImage: 'https://dl.dropboxusercontent.com/s/rhhvdypwylccazd/Google-Graph-s.png?dl=1&amp;token_hash=AAG9z3c8b7F2tzS_ShrGu-RaZFpOisBpdoX0XtaUFXzHKg'
+    shortDescription: |
+        Documentation for the website you are currently browsing!
     description: |
         The website you are currently browsing!
     template: 'Projects/PJ1/PJ1.html'
@@ -13,6 +16,10 @@ pages:
         template: 'Projects/PJ1/sub2.html'
   - 'S.T.A.B.L.E.':
     title: 'S.T.A.B.L.E.'
+    smallImage: 'https://dl.dropboxusercontent.com/s/rhhvdypwylccazd/Google-Graph-s.png?dl=1&amp;token_hash=AAG9z3c8b7F2tzS_ShrGu-RaZFpOisBpdoX0XtaUFXzHKg'
+    shortDescription: |
+        This is my senior year capstone project to get my batchlors degree in Electrical <br>
+        and Computer Engineering while attending University of Colorado at Boulder.
     description: |
         This is my senior year capstone project to get my batchlors degree in Electrical <br>
         and Computer Engineering while attending University of Colorado at Boulder.
@@ -21,12 +28,20 @@ pages:
       - 'p2'
   - 'Simon-Says':
     title: 'Simon-Says'
+    smallImage: 'https://dl.dropboxusercontent.com/s/rhhvdypwylccazd/Google-Graph-s.png?dl=1&amp;token_hash=AAG9z3c8b7F2tzS_ShrGu-RaZFpOisBpdoX0XtaUFXzHKg'
+    shortDescription: |
+        This is the project I completed while taking CU's Real Time Embedded course, (Course#).<br>
+        We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
+        on a computer running a copy of Wind River's VxWorks RTOS.
     description: |
         This is the project I completed while taking CU's Real Time Embedded course, (Course#).<br>
         We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
         on a computer running a copy of Wind River's VxWorks RTOS.
   - 'Junior-Project':
     title: 'Junior-Project'
+    smallImage: 'https://dl.dropboxusercontent.com/s/rhhvdypwylccazd/Google-Graph-s.png?dl=1&amp;token_hash=AAG9z3c8b7F2tzS_ShrGu-RaZFpOisBpdoX0XtaUFXzHKg'
+    shortDescription: |
+        Remote control car driven by your cell phone & your brain!
     description: |
         Booga-wooga doo!!
     subPages:

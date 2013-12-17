@@ -36,6 +36,7 @@ class webApplication(object):
 
 		#get initial data from yaml file
 		self.numMainTabs = len(self.webSiteInfo['mainTabList'])
+		self.mainTabs = self.webSiteInfo['mainTabList']
 		self.validMainTabs = []
 		for i in range(0,5):
 			self.validMainTabs.append(self.webSiteInfo['mainTabList'][i]['title'])
@@ -118,6 +119,29 @@ class webApplication(object):
 		#can't do much, no template to return
 		return None,None
 
+	def getCustomHomeData(self, pathArray, data):
+		pageData,templateLocation = self.getInitialData(pathArray, data)
+		featuredPages = data['featuredPages']
+		pageData = []
+
+		#for each featured page, find & push appropriate project information into pageData array
+		for fp in featuredPages:
+			pType = fp['type']
+			pTitle = fp['title']
+			for mt in self.mainTabs:
+				if(mt['title'] == pType):
+					tLoc = mt['location']
+					pData = self.pageYamls[tLoc]
+					for rp in pData['pages']:
+						if(rp['title'] == pTitle):
+							#print 'Project Match!',pTitle
+							rp.update({'type':pType})
+							pageData.append(rp);
+		for p in pageData:
+			print p['title']
+			print p['type']
+		return pageData, templateLocation
+
 	#Parses path for main tabs.  Recognizes capital cases as 'altNames'
 	def parseRequestString(self, pathArray):
 		reqStr = pathArray[1]
@@ -127,7 +151,10 @@ class webApplication(object):
 			if(reqStr == pTitle):
 				#print 'Found Match in title',reqStr, pTitle
 				self.markTabAsActive(i)
-				return self.getInitialData(pathArray, pData)
+				if(i == 0):
+					return self.getCustomHomeData(pathArray,pData)
+				else:
+					return self.getInitialData(pathArray, pData)
 			else:
 				try:
 					aNames = pData['altNames']
@@ -135,7 +162,10 @@ class webApplication(object):
 						if(reqStr == name):
 							#print 'Found Match in altNames',reqStr, name
 							self.markTabAsActive(i)
-							return self.getInitialData(pathArray, pData)
+							if(i == 0):
+								return self.getCustomHomeData(pathArray,pData)
+							else:
+								return self.getInitialData(pathArray, pData)
 				except KeyError:
 					print 'KeyError on finding altNames'
 
@@ -190,26 +220,6 @@ class webApplication(object):
 						print altNames
 					except KeyError:
 						print 'AltNames Key Error'
-			'''
-			if (pathArray[1] == 'Home'):
-				self.webSiteInfo['mainTabList'][0]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][0]['template'])
-			elif (pathArray[1] == 'Tutorials'):
-				self.webSiteInfo['mainTabList'][1]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][1]['template'])
-			elif (pathArray[1] == 'Projects'):
-				self.webSiteInfo['mainTabList'][2]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][2]['template'])
-			elif (pathArray[1] == 'Bookshelf'):
-				self.webSiteInfo['mainTabList'][3]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][3]['template'])
-			elif (pathArray[1] == 'AboutMe'):
-				self.webSiteInfo['mainTabList'][4]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][4]['template'])
-			else:
-				self.webSiteInfo['mainTabList'][0]['selected']='true'
-				templateLocation = str(self.webSiteInfo['mainTabList'][0]['template'])
-			'''
 			#smart index of data
 			pageData,templateLocation = self.parseRequestString(pathArray)
 		else:

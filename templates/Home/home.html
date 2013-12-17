@@ -6,7 +6,7 @@
 
 <!-- Block for changing any necessary page-styles -->
 {% block pageStyles %}
-<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />
+<link href="Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
@@ -15,38 +15,57 @@
 
 <!--Block For Changing Page Content-->
 {% block content %}
-<h1>Index</h1>
-<p class="important">
-  Welcome on my awesome homepage.
-</p>
-<div>
-	<!--
-	<img src="https://photos-1.dropbox.com/t/0/AADjZBOHKmYK1HrL124CUuWRQMQwK0s_2CMiqWK6ygXAEA/12/7739382/jpeg/32x32/3/_/1/2/2013-12-05%2022.33.07.jpg/sk6r2YU16_Lwp03HDurQcz-Mk9CXcDU2vQKIn2yw6aA?size=1280x960"></img>
-	<img src="https://www.dropbox.com/s/sqd4a9ajbr3s9d7/2013-12-05%2022.33.07.jpg"></img>
-	<img src="https://photos-4.dropbox.com/t/0/AAD6ZxB8RCqkxWK4UzPUxo9OAGZN42r5wD_kdK_lDGa-Pw/12/7739382/jpeg/1024x768/3/1386536400/0/2/2013-12-05%2022.33.07.jpg/sk6r2YU16_Lwp03HDurQcz-Mk9CXcDU2vQKIn2yw6aA"></img>
--->
-	<p>
-		hello world!! woot!
-	</p>
-</div>
-<div id="contentBlocks">
+<h1>Quest for an Expertice</h1><br>
+<!--<h1>Playground for Electrical & Computer Engineering</h1>-->
+<p>I am an Electrical & Computer Engineer by degree and an active hobbiest in the EE, ECE, and CS fields.  This website is a cumulation of my accomplishments and things I find helpful to know on a day to day basis and wish to share with the public.</p>
+<div id="featuredPages">
 {% for featuredPage in mainTabList.0.featuredPages %}
-	<div id="contentBlock">
-		<div id="contentBlockMainBody">
-			<div id="contentBlockTitle">
+	<div id="featuredPage">
+		<div id="featuredPageMainBody">
+			<div id="featuredPageTitle">
 				<p> {{ featuredPage.title }} </p>
 			</div>
-			<div id="contentBlockDescription">
+			<div id="featuredPageDescription">
 				<p> {{ featuredPage.description }} </p>
 			</div>
-			<div id="contentBlockImage">
+			<div id="featuredPageImage">
 			</div>
 		</div>
 	</div>
 {% endfor %}
 </div>
-<div id="ajaxDataBlock">
+
+<!--START Copy of Data from tutorialsTab.html-->
+<div id="pageContentBlock">
+{% for page in pageData %}
+	<div id="contentBlock">
+		<div id="searchBarBlock" class="pageListItem">
+			<div class="leftSide">
+				<div class="leftSideBlock">
+					<div id="contentBlockImage">
+						<a href="/{{ page.type }}/{{ page.title }}">
+							<img src="{{ page.smallImage }}"></img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="rightSide">
+				<div class="rightSideBlock">
+					<div id="contentBlockTitle">
+						<p> <a href="/{{ page.type }}/{{ page.title }}">{{ page.title }}</a></p>
+					</div>
+					<div id="contentBlockDescription">
+						<p> {{ page.shortDescription }} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>
+<!--END Copy of Data from tutorialsTab.html-->
+<!--<div id="ajaxDataBlock">
 	<p id="ajaxData">YO </p>
 	<input type="button" value="Get Scores!" onClick="getScores()"></input>
-</div>
+</div>-->
 {% endblock %}
