@@ -14,12 +14,12 @@ class webApplication(object):
 		self.preLoadedDict = False
 
 		if(configDict == None):
-			self.webSiteInfo = yaml.load(open('index.yaml', 'rb'))
-			log('loading index.yaml file')
+			self.webSiteInfo = yaml.load(open('index-data.yaml', 'rb'))
+			log('loading index-data.yaml file')
 		else:
 			self.webSiteInfo = configDict
 			self.preLoadedDict = True
-			log('using pre-loaded index.yaml file')
+			log('using pre-loaded index-data.yaml file')
 
 		#Load a selected amount of other yaml files
 		self.pageYamls = {

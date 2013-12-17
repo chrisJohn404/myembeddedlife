@@ -1,0 +1,121 @@
+mainDict:
+
+  pageTitle: 'myEmbeddedLife'
+  currentUserName: 'none'
+  mainTabList:
+  #Special Information to be displayed on the home page, consider removing
+    - 'Home':
+      selected:
+      title: 'Home'
+      template: 'Home/home.html'
+      notFoundTemplate: 'Home/homeNotFound.html'
+      altNames:
+        - 'home'
+        - ''
+      description: |
+          Welcome to my website!
+      featuredPages:
+        - 'featured1':
+          type: 'Tutorial'
+          title: 'Tutorial1'
+          contentFile:
+          description: |
+              This is my first featured page!
+        - 'featured2':
+          type: 'Project'
+          title: 'Project1'
+          contentFile:
+          description: |
+              This is my second featured page!
+
+  #Information to be displayed under the instructables tab
+    - 'Tutorials':
+      selected:
+      title: 'Tutorials'
+      template: 'Tutorials/tutorialsTab.html'
+      notFoundTemplate: 'Tutorials/tutorialNotFound.html'
+      defaultTemplate: 'Tutorials/tutorialsTabDefault.html'
+      location: 'templates/Tutorials/tutorialsList.yaml'
+      subTabs:
+        - 'css/html/js'
+      altNames:
+        - 'tutorials'
+      description: |
+          This is where you can find a large amount of information regarding several different fields, CS, EE, ECE, & Climbing!  They will hopefully provide insight, tips, and assistance as to how this complex world of technology works.
+
+  #Information to be displayed under the projects tab
+    - 'Projects':
+      selected:
+      title: 'Projects'
+      template: 'Projects/projectsTab.html'
+      notFoundTemplate: 'Projects/projectNotFound.html'
+      defaultTemplate: 'Projects/projectsTabDefault.html'
+      location: 'templates/Projects/projectsList.yaml'
+      altNames:
+        - 'projects'
+      description: |
+          This is where you can find a list of all my different projects, some are quite interesting.
+
+  #Information to be displayed under the bookshelf tab
+    - 'Bookshelf':
+      selected:
+      title: 'Bookshelf'
+      template: 'Bookshelf/bookshelfTab.html'
+      notFoundTemplate: 'Bookshelf/bookNotFound.html'
+      defaultTemplate: 'Bookshelf/bookshelfTabDefault.html'
+      location: 'templates/Bookshelf/bookList.yaml'
+      altNames:
+        - 'bookshelf'
+        - 'bookShelf'
+        - 'BookShelf'
+      description: |
+          This is where you can find a list of books, websites, or youtube videos that I find to be interesting.
+
+  #Information to be displayed under the AboutMe tab
+    - 'AboutMe':
+      selected:
+      title: 'AboutMe'
+      template: 'AboutMe/aboutMeTab.html'
+      notFoundTemplate: 'AboutMe/attributeNotFound.html'
+      defaultTemplate: 'AboutMe/aboutMeTabDefault.html'
+      location: 'templates/AboutMe/aboutMeInfo.yaml'
+      altNames:
+        - 'Aboutme'
+        - 'aboutme'
+        - 'aboutMe'
+      description: |
+          This is where you can find information about me, the web site developer & creator of the related Tutorials/Projects. 
+  #Information to be displayed under the ERROR tab
+  error:
+    selected:
+    title: 'Error'
+    template: 'Error/error-invalidYamlLoad.html'
+    altNames:
+      - 'error'
+    description: |
+        This is an error tab
+
+  mainTabs:
+    - title: 'Home'
+    - title: 'Instructables'
+      description: |
+          Hello World!! This is a multi-line
+          input
+      contents:
+        - title: 'Inst1'
+        - title: 'Inst2'
+    - title: 'Projects'
+      contents:
+        - title: 'Proj1'
+        - title: 'Proj2'
+    - title: 'Bookshelf'
+      contents:
+        - title: 'Book1'
+        - title: 'Book2'
+    - title: 'AboutMe'
+      contents:
+        - title: 'Interests'
+        - title: 'Current Activities'
+
+  activePage: 'Home'
+  pageData: ''

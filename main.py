@@ -26,7 +26,7 @@ jinja_environment = jinja2.Environment(
 )
 
 #configFile = yaml.load(open(os.path.dirname(__file__)+'/index.yaml', 'rb'))
-configFile = yaml.load(open('index.yaml', 'rb'))
+configFile = yaml.load(open('./index-data.yaml', 'rb'))
 
 class MainPage(webapp2.RequestHandler):
     def get(self):

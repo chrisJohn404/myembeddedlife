@@ -4,7 +4,7 @@
 #1. The .yaml file syntax is super strict, make sure there is a space after the colon!!
 #2. To re-load the app.yaml file the app must be stopped and restarted from the Google App Engine Launcher.
 application: myembeddedlife
-version: 0
+version: 3
 runtime: python27
 api_version: 1
 threadsafe: true
