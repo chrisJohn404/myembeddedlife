@@ -15,11 +15,11 @@ class webApplication(object):
 
 		if(configDict == None):
 			self.webSiteInfo = yaml.load(open('index-data.yaml', 'rb'))
-			log('loading index-data.yaml file')
+			#log('loading index-data.yaml file')
 		else:
 			self.webSiteInfo = configDict
 			self.preLoadedDict = True
-			log('using pre-loaded index-data.yaml file')
+			#log('using pre-loaded index-data.yaml file')
 
 		#Load a selected amount of other yaml files
 		self.pageYamls = {
@@ -83,12 +83,10 @@ class webApplication(object):
 					if(len(pathArray) == 3):
 						return pageData, templateLocation
 					else:
-						log('path>3')
 						return self.parseSubPageURLs(pathArray,pageData,data)
 			#if page isn't found then return the notFoundTemplate
 			return pageData, data['notFoundTemplate']
 		else:
-			log('path<2')
 			return pageData, data['notFoundTemplate']
 
 	#After first stage of path parsing, figure catch sub-page errors
