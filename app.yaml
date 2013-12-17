@@ -24,17 +24,20 @@ admin_console:
 
 handlers:
 - url: /(favicon.ico)
-  static_files: \1
-  upload: siteRequired/favicon.png
+  static_files: siteRequired/\1
+  upload: siteRequired/(.*\.(ico))
+#- url: /(robots.txt)
+#  static_files: siteRequired/\1
+#  upload: /robots.txt
 - url: /(robots.txt)
-  static_files: \1
-  upload: siteRequired/robots.txt
+  static_files: siteRequired/\1
+  upload: siteRequired/(.*\.(txt))
 - url: /(sitemap.xml)
-  static_files: \1
-  upload: siteRequired/sitemap.xml
+  static_files: siteRequired/\1
+  upload: siteRequired/(.*\.(xml))
 - url: /(google5228ccde1df7ede3.html)
-  static_files: \1
-  upload: siteRequired/google5228ccde1df7ede3.html
+  static_files: siteRequired/\1
+  upload: siteRequired/(.*\.(html))
 - url: /(.*\.(gif|png|jpg|ico|js|css|xml))
   static_files: \1
   upload: (.*\.(gif|png|jpg|ico|js|css|xml))
