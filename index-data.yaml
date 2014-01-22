@@ -49,6 +49,18 @@ mainDict:
         - 'projects'
       description: |
           This is where you can find a list of all my different projects, some are quite interesting.
+  #Information to be displayed under the notes tab
+    - 'Notes':
+      selected:
+      title: 'Notes'
+      template: 'Notes/notesTab.html'
+      notFoundTemplate: 'Notes/noteNotFound.html'
+      defaultTemplate: 'Notes/notesTabDefault.html'
+      location: 'templates/Notes/notesList.yaml'
+      altNames:
+        - 'notes'
+      description: |
+          This is where you can find an organized information base that I find to be interesting.
 
   #Information to be displayed under the bookshelf tab
     - 'Bookshelf':
@@ -102,6 +114,10 @@ mainDict:
       contents:
         - title: 'Proj1'
         - title: 'Proj2'
+    - title: 'Notes'
+      contents:
+        - title: 'Note1'
+        - title: 'Note2'
     - title: 'Bookshelf'
       contents:
         - title: 'Book1'

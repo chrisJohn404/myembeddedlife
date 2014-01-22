@@ -2,6 +2,7 @@ pages:
   - 'MyEmbeddedLife':
     title: 'MyEmbeddedLife'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/tgHGoNCuk5/SiteImages/Projects/MyEmbeddedLife/MyEmbeddedLIfe-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+    smallImageAltText: 'MyEmbeddedLife Website Documentation'
     shortDescription: |
         Documentation for the website you are currently browsing!
     description: |
@@ -17,6 +18,7 @@ pages:
   - 'S.T.A.B.L.E.':
     title: 'S.T.A.B.L.E.'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/MFL3y5hsmE/SiteImages/Projects/STABLE/STABLE-SM.PNG?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+    smallImageAltText: ''
     shortDescription: |
         This is my senior year capstone project to get my batchlors degree in Electrical <br>
         and Computer Engineering while attending University of Colorado at Boulder.
@@ -29,6 +31,7 @@ pages:
   - 'Simon-Says':
     title: 'Simon-Says'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/cVs0gidMRQ/SiteImages/Projects/Simon-Says/Simon-Says-SM.jpg?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+    smallImageAltText: ''
     shortDescription: |
         This is the project I completed while taking CU's Real Time Embedded course, (ECEN4623).<br>
         We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
@@ -40,6 +43,7 @@ pages:
   - 'Diablo':
     title: 'Diablo'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/78Unq4n0iZ/SiteImages/Projects/Diablo/Diablo-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+    smallImageAltText: ''
     shortDescription: |
         Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
     description: |

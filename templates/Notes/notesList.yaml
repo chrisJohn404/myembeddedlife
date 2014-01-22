@@ -1,0 +1,10 @@
+pages:
+  - 'Note1':
+    title: 'Note1'
+    description: |
+        This note is super cool!
+  - 'Note2':
+    title: 'Note2'
+    description: |
+        This note is super cool!
+     

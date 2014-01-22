@@ -31,6 +31,8 @@ class webApplication(object):
 			yaml.load(open(self.webSiteInfo['mainTabList'][3]['location'],'rb')),
 			self.webSiteInfo['mainTabList'][4]['location']:
 			yaml.load(open(self.webSiteInfo['mainTabList'][4]['location'],'rb')),
+			self.webSiteInfo['mainTabList'][5]['location']:
+			yaml.load(open(self.webSiteInfo['mainTabList'][5]['location'],'rb')),
 		}
 
 
@@ -38,7 +40,7 @@ class webApplication(object):
 		self.numMainTabs = len(self.webSiteInfo['mainTabList'])
 		self.mainTabs = self.webSiteInfo['mainTabList']
 		self.validMainTabs = []
-		for i in range(0,5):
+		for i in range(0,6):
 			self.validMainTabs.append(self.webSiteInfo['mainTabList'][i]['title'])
 			self.validMainTabs.extend(self.webSiteInfo['mainTabList'][i]['altNames'])
 
@@ -247,9 +249,11 @@ class webApplication(object):
 				self.webSiteInfo['mainTabList'][1]['selected']=None
 			elif (pathArray[1] == 'Projects'):
 				self.webSiteInfo['mainTabList'][2]['selected']=None
-			elif (pathArray[1] == 'Bookshelf'):
+			elif (pathArray[1] == 'Notes'):
 				self.webSiteInfo['mainTabList'][3]['selected']=None
-			elif (pathArray[1] == 'AboutMe'):
+			elif (pathArray[1] == 'Bookshelf'):
 				self.webSiteInfo['mainTabList'][4]['selected']=None
+			elif (pathArray[1] == 'AboutMe'):
+				self.webSiteInfo['mainTabList'][5]['selected']=None
 			else:
 				self.webSiteInfo['mainTabList'][0]['selected']=None

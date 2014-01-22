@@ -78,6 +78,8 @@ app = webapp2.WSGIApplication([
 	('/Tutorials/.*', MainPage),
 	('/Projects', MainPage),
 	('/Projects/.*', MainPage),
+	('/Notes', MainPage),
+	('/Notes/.*', MainPage),
 	('/Bookshelf', MainPage),
 	('/Bookshelf/.*', MainPage),
 	('/AboutMe', MainPage),

@@ -26,6 +26,13 @@ mainTabList:
     template: 'Home/home.html'
     description: |
         This is where you can find a list of all my different projects, some are quite interesting.
+#Information to be displayed under the notes tab
+  - 'Notes':
+    selected:
+    title: 'Notes'
+    template: 'Home/home.html'
+    description: |
+        This is where you can find a list of all my different projects, some are quite interesting.
 
 #Information to be displayed under the bookshelf tab
   - 'Bookshelf':

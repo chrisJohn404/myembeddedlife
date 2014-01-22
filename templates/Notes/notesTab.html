@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+
+<!--Block For Changing Page Header-->
+{% block pageTitle %}
+{% endblock %}
+
+<!-- Block for changing any necessary page-styles -->
+{% block pageStyles %}
+<!--<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />-->
+{% endblock %}
+
+
+{% block coolnessBlock %}
+{% endblock %}
+
+<!--Block For Changing Page Content-->
+{% block content %}
+<div>
+	<p>loaded notesTab.html</p>
+</div>
+<div id="contentBlocks">
+{% for page in pageData.pages %}
+	<div id="contentBlock">
+		<div id="contentBlockMainBody">
+			<div id="contentBlockTitle">
+				<p> {{ page.title }} </p>
+			</div>
+			<div id="contentBlockDescription">
+				<p> {{ page.description }} </p>
+			</div>
+			<div id="contentBlockImage">
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>
+{% endblock %}
