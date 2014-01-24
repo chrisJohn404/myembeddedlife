@@ -2,16 +2,17 @@
 
 <!--Block For Changing Page Header-->
 {% block pageTitle %}
-<h1>{{ pageData.title }}</h1>
 {% endblock %}
 
 <!-- Block for changing any necessary page-styles -->
 {% block pageStyles %}
-<link href="/Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css" />
+<link href="Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
 {% block coolnessBlock %}
+{% block notesBreadcrumb %}
+	{% endblock %}
 {% endblock %}
 
 <!--Block For Changing Page Content-->
@@ -32,7 +33,7 @@
 			<div class="rightSide">
 				<div class="rightSideBlock">
 					<div id="contentBlockTitle">
-						<p> <a href="/Notes/{{ page.title }}">{{ page.dTitle }}</a></p>
+						<p> <a href="/Notes/{{ page.title }}">{{ page.title }}</a></p>
 					</div>
 					<div id="contentBlockDescription">
 						<p> {{ page.shortDescription }} </p>

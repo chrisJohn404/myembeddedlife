@@ -1,22 +1,62 @@
 {% extends "master.html" %}
 
+{% block title %}
+<title>{{ pageData.dTitle }}</title>
+{% endblock %}
+
 <!--Block For Changing Page Header-->
 {% block head %}
 {% endblock %}
 
+{% block pageTitle %}
+<h1>{{ pageData.dTitle }}</h1>
+{% endblock %}
+
 <!-- Block for changing any necessary page-styles -->
 {% block pageStyles %}
-<link href="Stylesheets/home_style.css" rel="stylesheet" type="text/css" />
+<link href="/Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 
 {% block coolnessBlock %}
-<h1> Wahoo! </h1>
 {% endblock %}
 
 <!--Block For Changing Page Content-->
 {% block content %}
+<p>Loaded notesTabDefault.html</p>
+{{ pageData.title }}
 <div>
-	<p>loaded Bookshelf Tab Default.html</p>
+	<p>{{ pageData.description }}</p>
+</div>
+<br>
+<div id="TemplatePageData">
+	{{ pageData.data }}
+</div>
+<div id="pageContentBlock">
+{% for page in pageData.subPages %}
+	<div id="contentBlock">
+		<div id="searchBarBlock" class="pageListItem">
+			<div class="leftSide">
+				<div class="leftSideBlock">
+					<div id="contentBlockImage">
+						<a href="/Notes/{{ page.title }}">
+							<img src="{{ page.smallImage }}" alt="{{ page.smallImageAltText }}"></img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="rightSide">
+				<div class="rightSideBlock">
+					<div id="contentBlockTitle">
+						<p> <a href="/Notes/{{ pageData.title }}/{{ page.title }}">{{ page.dTitle }}</a></p>
+					</div>
+					<div id="contentBlockDescription">
+						<p> {{ page.shortDescription }} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
 </div>
 {% endblock %}

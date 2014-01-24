@@ -1,10 +1,49 @@
 pages:
-  - 'Note1':
-    title: 'Note1'
+  - 'ble':
+    title: 'ble'
+    dTitle: 'Bluetooth Low Energy - 4.0'
+    smallImage: 'https://dl.dropboxusercontent.com/s/xwmhhyg3pjdyen1/BLE-Image-Sm.png?dl=1&token_hash=AAEzfySOEQJCbTA3bOxk2VyJbg0FIWi5Br36QJbIB9nGMQ'
+    smallImageAltText: ''
+#    template: 'Projects/PJ1/PJ1.html'
+    shortDescription: |
+        Bluetooth Low Energy is a wireless network protocol enabling many of todays low power wireless devices.
     description: |
-        This note is super cool!
-  - 'Note2':
-    title: 'Note2'
+        This is the project I completed while taking CU's Real Time Embedded course, (ECEN4623).<br>
+        We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
+        on a computer running a copy of Wind River's VxWorks RTOS.
+    data: |
+        <h2>Related Pages</h2>
+    subPages:
+      - 'Nordic-nRF51822':
+        title: 'Nordic-nRF51822'
+        dTitle: 'Nordic-nRF51822'
+        smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+#        template: 'Projects/PJ1/sub1.html'
+        shortDescription: |
+            This chip is pretty cool!
+        description: |
+            This chip is fron nordic semiconductor and these are some pages related to my experience with the IC.
+        data: |
+            <h2>Related Pages</h2>
+        subPages:
+          - 'GettingStarted':
+            title: 'GettingStarted'
+            dTitle: 'Getting Started'
+            smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+            shortDescription: |
+                This is some basic information about how to get started in using this IC
+          - 'TestApplication':
+            title: 'TestApplication'
+            dTitle: 'Test Application'
+            smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+            shortDescription: |
+                This is some basic information about how to get started in using this IC
+  - 'Diablo':
+    title: 'Diablo'
+    dTitle: 'Diablo'
+    smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/78Unq4n0iZ/SiteImages/Projects/Diablo/Diablo-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+    smallImageAltText: ''
+    shortDescription: |
+        Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
     description: |
-        This note is super cool!
-     
+        Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
