@@ -1,0 +1,1 @@
+/usr/local/google_appengine/dev_appserver.py --skip_sdk_update_check=yes --port=8080 --admin_port=8000 --host=192.168.1.4 --admin_host=192.168.1.4 /Users/chrisjohnson/Dropbox/git/WebSites/myembeddedlife/app.yaml

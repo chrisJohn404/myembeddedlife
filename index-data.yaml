@@ -2,6 +2,7 @@ mainDict:
 
   pageTitle: 'myEmbeddedLife'
   currentUserName: 'none'
+  notFoundTemplate: 'pageNotFound.html'
   mainTabList:
   #Special Information to be displayed on the home page, consider removing
     - 'Home':
@@ -16,11 +17,14 @@ mainDict:
           Welcome to my website!
       featuredPages:
         - 'featured1':
-          type: 'Tutorials'
-          title: 'Google-Graphs'
+          type: 'Notes'
+          title: 'ble'
         - 'featured2':
           type: 'Projects'
           title: 'MyEmbeddedLife'
+        - 'featured3':
+          type: 'Tutorials'
+          title: 'Google-Graphs'
 
   #Information to be displayed under the instructables tab
     - 'Tutorials':

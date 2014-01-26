@@ -1,6 +1,7 @@
 pages:
   - 'T1':
     title: 'Google-Graphs'
+    dTitle: 'Google-Graphs'
     shortDescription: |
         Embedding graphs from google spreadsheets onto a webpage.
     description: |
@@ -28,6 +29,7 @@ pages:
       - 'test3'
   - 'T2':
     title: 'Embedding-Git'
+    dTitle: 'Embedding-Git'
     shortDescription: |
         Embedding github hosted code on a webpage.
     description: |

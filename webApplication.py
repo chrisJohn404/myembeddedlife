@@ -52,19 +52,44 @@ class webApplication(object):
 		return
 	def markTabAsActive(self, index):
 		self.webSiteInfo['mainTabList'][index]['selected']='true'
-	def parseSubPageURLs(self,pathArray,pData,data):
+	def getCrumbURL(self,pathArray,index):
+		crumbURL = ''
+		for i in range(0,index):
+			if(pathArray[i] != '') and (pathArray[i] !='Home'):
+				crumbURL = crumbURL + '/' + pathArray[i]
+		return crumbURL
+	def parseSubPageURLs(self,pathArray,pData,data,index):
 		pageData = pData['subPages']
 		numPages = len(pageData)
 		templateLocation = None
+		startbreadCrumbVal = 3
+		testVal = 10
+		if(index > testVal):
+			print pathArray[index]
 		for page in pageData:
-			if(page['title'] == pathArray[3]):
+			if(page['title'] == pathArray[index]):
 				pageData = page
 				#if page exists try & load its template
 				try:
 					templateLocation = page['template']
 				except KeyError:
 					templateLocation = data['defaultTemplate']
-				return pageData, templateLocation
+				if(len(pathArray) == index+1):
+					if(index > testVal):
+						print templateLocation
+					pageData['breadCrumbs'] = []
+					crumbURL = self.getCrumbURL(pathArray,index)
+					pageData['breadCrumbs'].insert(0,{'title': pData['dTitle'],'url': crumbURL})
+					return pageData, templateLocation
+				else:
+					pageData, templateLocation = self.parseSubPageURLs(pathArray,pageData,data,index+1)
+					if(index > testVal):
+						print templateLocation
+					crumbURL = self.getCrumbURL(pathArray,index)
+					pageData['breadCrumbs'].insert(0,{'title': pData['dTitle'],'url': crumbURL})
+					return pageData, templateLocation
+
+		print 'Not Found'
 		return pData, data['notFoundTemplate']
 	#pData contains the more local yaml file data that needs to be parsed for valid pages & sub-pages
 	#data contains the main yaml file.  Needed for loading the default html file if no specific one is found
@@ -85,7 +110,10 @@ class webApplication(object):
 					if(len(pathArray) == 3):
 						return pageData, templateLocation
 					else:
-						return self.parseSubPageURLs(pathArray,pageData,data)
+						pageData, templateLocation = self.parseSubPageURLs(pathArray,pageData,data,3)
+						pageData['breadCrumbs']
+						print pageData['breadCrumbs']
+						return pageData, templateLocation
 			#if page isn't found then return the notFoundTemplate
 			return pageData, data['notFoundTemplate']
 		else:
@@ -137,9 +165,10 @@ class webApplication(object):
 							#print 'Project Match!',pTitle
 							rp.update({'type':pType})
 							pageData.append(rp);
-		for p in pageData:
-			print p['title']
-			print p['type']
+		if(self.debug and False):
+			for p in pageData:
+				print p['title']
+				print p['type']
 		return pageData, templateLocation
 
 	#Parses path for main tabs.  Recognizes capital cases as 'altNames'
@@ -171,7 +200,9 @@ class webApplication(object):
 
 		#If tab is not found (should never get here) then return None's
 		#This case is hopefully covered by the app.yaml file
-		return None, None
+		#return None, None
+		# This was clearly not true, return default page instead:
+		return self.webSiteInfo,self.webSiteInfo['notFoundTemplate']
 
 	def returnPageString(self, reqStr, userStr):
 

@@ -1,6 +1,7 @@
 pages:
   - 'MyEmbeddedLife':
     title: 'MyEmbeddedLife'
+    dTitle: 'MyEmbeddedLife'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/tgHGoNCuk5/SiteImages/Projects/MyEmbeddedLife/MyEmbeddedLIfe-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
     smallImageAltText: 'MyEmbeddedLife Website Documentation'
     shortDescription: |
@@ -17,6 +18,7 @@ pages:
 #        template: 'Projects/PJ1/sub2.html'
   - 'S.T.A.B.L.E.':
     title: 'S.T.A.B.L.E.'
+    dTitle: 'S.T.A.B.L.E.'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/MFL3y5hsmE/SiteImages/Projects/STABLE/STABLE-SM.PNG?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
     smallImageAltText: ''
     shortDescription: |
@@ -30,6 +32,7 @@ pages:
 #      - 'p2'
   - 'Simon-Says':
     title: 'Simon-Says'
+    dTitle: 'Simon-Says'
     smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/cVs0gidMRQ/SiteImages/Projects/Simon-Says/Simon-Says-SM.jpg?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
     smallImageAltText: ''
     shortDescription: |

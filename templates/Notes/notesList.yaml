@@ -1,5 +1,6 @@
 pages:
   - 'ble':
+    subURL: ''
     title: 'ble'
     dTitle: 'Bluetooth Low Energy - 4.0'
     smallImage: 'https://dl.dropboxusercontent.com/s/xwmhhyg3pjdyen1/BLE-Image-Sm.png?dl=1&token_hash=AAEzfySOEQJCbTA3bOxk2VyJbg0FIWi5Br36QJbIB9nGMQ'
@@ -8,15 +9,21 @@ pages:
     shortDescription: |
         Bluetooth Low Energy is a wireless network protocol enabling many of todays low power wireless devices.
     description: |
-        This is the project I completed while taking CU's Real Time Embedded course, (ECEN4623).<br>
-        We made a simon says game involving image recognition, servo control, and UDP video streaming<br>
-        on a computer running a copy of Wind River's VxWorks RTOS.
+        Currently I am doing some experimentation with Bluetooth Low Energy devices starting with Texas Instrument's 
+        <a href="http://www.ti.com/product/cc2540">CC2540</a>/<a href="http://www.ti.com/product/cc2541">CC2541</a> SoC and 
+        now moving on to the Nordic Semiconductor's <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-R-low-energy/nRF51822">nRF51822</a> SoC.
     data: |
         <h2>Related Pages</h2>
     subPages:
       - 'Nordic-nRF51822':
+        breadCrumbs: ''
+        subURL: '/ble'
         title: 'Nordic-nRF51822'
         dTitle: 'Nordic-nRF51822'
+        # breadCrumbs: ''
+          # - 'ble':
+          #   title: 'Bluetooth Low Energy'
+          #   url: '/Notes/ble'
         smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
 #        template: 'Projects/PJ1/sub1.html'
         shortDescription: |
@@ -27,23 +34,45 @@ pages:
             <h2>Related Pages</h2>
         subPages:
           - 'GettingStarted':
+            breadCrumbs: ''
+            subURL: '/ble'
             title: 'GettingStarted'
             dTitle: 'Getting Started'
+            # breadCrumbs: ''
+              # - 'ble':
+              #   title: 'Bluetooth Low Energy'
+              #   url: '/Notes/ble'
+              # - 'Nordic-nRF51822':
+              #   title: 'Nordic nRF51822'
+              #   url: '/Notes/ble/Nordic-nRF51822'
             smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
             shortDescription: |
                 This is some basic information about how to get started in using this IC
+            description: |
+                This is some basic information about how to get started in using this IC
+            data: |
+                1. Stuff<br>
           - 'TestApplication':
+            breadCrumbs: ''
+            subURL: '/ble'
             title: 'TestApplication'
             dTitle: 'Test Application'
+            # breadCrumbs: ''
+              # - 'ble':
+              #   title: 'Bluetooth Low Energy'
+              #   url: '/Notes/ble'
+              # - 'Nordic-nRF51822':
+              #   title: 'Nordic nRF51822'
+              #   url: '/Notes/ble/Nordic-nRF51822'
             smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
             shortDescription: |
                 This is some basic information about how to get started in using this IC
-  - 'Diablo':
-    title: 'Diablo'
-    dTitle: 'Diablo'
-    smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/78Unq4n0iZ/SiteImages/Projects/Diablo/Diablo-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
-    smallImageAltText: ''
-    shortDescription: |
-        Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
-    description: |
-        Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
+  # - 'Diablo':
+  #   title: 'Diablo'
+  #   dTitle: 'Diablo'
+  #   smallImage: 'https://dl.dropboxusercontent.com/sh/zfpkzcfsz97pntb/78Unq4n0iZ/SiteImages/Projects/Diablo/Diablo-SM.png?token_hash=AAHBQHP39tGS1wMFSIELMhDY6ZmAPdplu24s-gohwJyVpw'
+  #   smallImageAltText: ''
+  #   shortDescription: |
+  #       Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
+  #   description: |
+  #       Project 'Diablo' was my Junior year project creating a remote control car driven by your cell phone & your brain!
