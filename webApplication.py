@@ -112,7 +112,6 @@ class webApplication(object):
 					else:
 						pageData, templateLocation = self.parseSubPageURLs(pathArray,pageData,data,3)
 						pageData['breadCrumbs']
-						print pageData['breadCrumbs']
 						return pageData, templateLocation
 			#if page isn't found then return the notFoundTemplate
 			return pageData, data['notFoundTemplate']
@@ -174,6 +173,8 @@ class webApplication(object):
 	#Parses path for main tabs.  Recognizes capital cases as 'altNames'
 	def parseRequestString(self, pathArray):
 		reqStr = pathArray[1]
+		if(len(pathArray) > 1):
+			self.webSiteInfo['activePage']  = pathArray[1]
 		for i in range(0,self.numMainTabs):
 			pData = self.webSiteInfo['mainTabList'][i]
 			pTitle = pData['title']

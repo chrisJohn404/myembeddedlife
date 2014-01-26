@@ -1,19 +1,78 @@
 {% extends "master.html" %}
 
+{% block title %}
+<title>{{ pageData.dTitle }}</title>
+{% endblock %}
+
 <!--Block For Changing Page Header-->
 {% block head %}
-	
+{% endblock %}
+
+<!-- Block for changing any necessary page-styles -->
+{% block pageStyles %}
+<link href="/Stylesheets/pageListFormatting.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block pageTitle %}
+<table>
+	{% for breadCrumb in pageData.breadCrumbs %}
+		<th>
+			<div class="breadCrumbLinkBody">
+				<a href="{{ breadCrumb.url }}">{{ breadCrumb.title }}</a>
+			</div>
+		</th>
+		<th>
+			<div class="breadCrumbLinkBody">
+				<p>|</p>
+			</div>
+		</th>
+	{% endfor %}
+	<th>
+		<div class="breadCrumbLinkBody">
+			<p>{{ pageData.dTitle }}</p>
+		</div>
+	</th>
+</table>
+<h1>{{ pageData.dTitle }}</h1>
+{% endblock %}
+
+{% block coolnessBlock %}
 {% endblock %}
 
 <!--Block For Changing Page Content-->
 {% block content %}
-<h1>Index</h1>
-<p class="important">
-  Welcome on my awesome homepage.
-</p>
 <div>
-	<p>
-		hello world!! woot!
-	</p>
+	<p>{{ pageData.description }}</p>
+</div>
+<br>
+<div id="TemplatePageData">
+	{{ pageData.data }}
+</div>
+<div id="pageContentBlock">
+{% for page in pageData.subPages %}
+	<div id="contentBlock">
+		<div id="searchBarBlock" class="pageListItem">
+			<div class="leftSide">
+				<div class="leftSideBlock">
+					<div id="contentBlockImage">
+						<a href="/{{ activePage }}{{ pageData.subURL }}/{{ pageData.title }}/{{ page.title }}">
+							<img src="{{ page.smallImage }}" alt="{{ page.smallImageAltText }}"></img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="rightSide">
+				<div class="rightSideBlock">
+					<div id="contentBlockTitle">
+						<p> <a href="/{{ activePage }}{{ pageData.subURL }}/{{ pageData.title }}/{{ page.title }}">{{ page.dTitle }}</a></p>
+					</div>
+					<div id="contentBlockDescription">
+						<p> {{ page.shortDescription }} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
 </div>
 {% endblock %}

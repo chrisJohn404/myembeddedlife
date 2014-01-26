@@ -126,10 +126,10 @@ def getHomePageTest():
 
 	for i in range(0,len(tests)):
 		template_values, pageStr = page.returnPageString(tests[i]['test'], 'chris')
-		try:
-			print len(template_values['pageData']['breadCrumbs'])
-		except:
-			1+1
+		# try:
+		# 	print len(template_values['pageData']['breadCrumbs'])
+		# except:
+		# 	1+1
 		if(pageStr != tests[i]['result']):
 			print "Failed URL test case: " + tests[i]['test']
 			print 'Returned Pages: ',pageStr

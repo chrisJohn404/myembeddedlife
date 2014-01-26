@@ -72,7 +72,8 @@ mainDict:
       title: 'Bookshelf'
       template: 'Bookshelf/bookshelfTab.html'
       notFoundTemplate: 'Bookshelf/bookNotFound.html'
-      defaultTemplate: 'Bookshelf/bookshelfTabDefault.html'
+      # defaultTemplate: 'Bookshelf/bookshelfTabDefault.html'
+      defaultTemplate: 'defaultTemplate.html'
       location: 'templates/Bookshelf/bookList.yaml'
       altNames:
         - 'bookshelf'

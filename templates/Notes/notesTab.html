@@ -23,7 +23,7 @@
 			<div class="leftSide">
 				<div class="leftSideBlock">
 					<div id="contentBlockImage">
-						<a href="/Notes/{{ page.title }}">
+						<a href="/{{ activePage }}/{{ page.title }}">
 							<img src="{{ page.smallImage }}" alt="{{ page.smallImageAltText }}"></img>
 						</a>
 					</div>
@@ -32,7 +32,7 @@
 			<div class="rightSide">
 				<div class="rightSideBlock">
 					<div id="contentBlockTitle">
-						<p> <a href="/Notes/{{ page.title }}">{{ page.dTitle }}</a></p>
+						<p> <a href="/{{ activePage }}/{{ page.title }}">{{ page.dTitle }}</a></p>
 					</div>
 					<div id="contentBlockDescription">
 						<p> {{ page.shortDescription }} </p>

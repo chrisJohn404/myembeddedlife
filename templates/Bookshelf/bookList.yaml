@@ -1,10 +1,78 @@
+# pages:
+#   - 'Book1':
+#     title: 'Book1'
+#     description: |
+#         This book is super cool!
+#   - 'Book2':
+#     title: 'Book2'
+#     description: |
+#         This book is super cool!
+     
 pages:
   - 'Book1':
-    title: 'Book1'
+    subURL: ''
+    title: 'ble-devlopers-handbook'
+    dTitle: "BLE - The Developer's Handbook"
+    smallImage: 'https://dl.dropboxusercontent.com/s/xwmhhyg3pjdyen1/BLE-Image-Sm.png?dl=1&token_hash=AAEzfySOEQJCbTA3bOxk2VyJbg0FIWi5Br36QJbIB9nGMQ'
+    smallImageAltText: ''
+    shortDescription: |
+        Bluetooth Low Energy is a wireless network protocol enabling many of todays low power wireless devices. 
+        This book describes in great lengths the protocol in its entirety & these are some important facts that I learned from reading it.
     description: |
-        This book is super cool!
-  - 'Book2':
-    title: 'Book2'
-    description: |
-        This book is super cool!
-     
+        Bluetooth Low Energy is a wireless network protocol enabling many of todays low power wireless devices. 
+        This book describes in great lengths the protocol in its entirety & these are some important facts that I learned from reading it. 
+    data: |
+        <h2>Related Pages</h2>
+    subPages:
+      - 'highlights':
+        breadCrumbs: ''
+        subURL: '/ble-devlopers-handbook'
+        title: 'Nordic-nRF51822'
+        dTitle: 'Nordic-nRF51822'
+        # breadCrumbs: ''
+          # - 'ble':
+          #   title: 'Bluetooth Low Energy'
+          #   url: '/Notes/ble'
+        smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+#        template: 'Projects/PJ1/sub1.html'
+        shortDescription: |
+            This chip is pretty cool!
+        description: |
+            This chip is fron nordic semiconductor and these are some pages related to my experience with the IC.
+        data: |
+            <h2>Related Pages</h2>
+        subPages:
+          - 'GettingStarted':
+            breadCrumbs: ''
+            subURL: '/ble-devlopers-handbook'
+            title: 'GettingStarted'
+            dTitle: 'Getting Started'
+            # breadCrumbs: ''
+              # - 'ble':
+              #   title: 'Bluetooth Low Energy'
+              #   url: '/Notes/ble'
+              # - 'Nordic-nRF51822':
+              #   title: 'Nordic nRF51822'
+              #   url: '/Notes/ble/Nordic-nRF51822'
+            smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+            shortDescription: |
+                This is some basic information about how to get started in using this IC
+            description: |
+                This is some basic information about how to get started in using this IC
+            data: |
+                1. Stuff<br>
+          - 'TestApplication':
+            breadCrumbs: ''
+            subURL: '/ble-devlopers-handbook'
+            title: 'TestApplication'
+            dTitle: 'Test Application'
+            # breadCrumbs: ''
+              # - 'ble':
+              #   title: 'Bluetooth Low Energy'
+              #   url: '/Notes/ble'
+              # - 'Nordic-nRF51822':
+              #   title: 'Nordic nRF51822'
+              #   url: '/Notes/ble/Nordic-nRF51822'
+            smallImage: 'https://dl.dropboxusercontent.com/s/i4e83t8d7zjhdvn/Nordic-nRF51822-Img-Sm.png?dl=1&token_hash=AAHS5zBac9YqfyB5AVoM58_XrDVGYbgvfG-YEH6XmDMUQA'
+            shortDescription: |
+                This is some basic information about how to get started in using this IC
